@@ -8,7 +8,7 @@
     </title>
     <meta
       name="description"
-      content="Tinggalkan pembukuan manual. Admin virtual kami siap mencatat pemasukan, pengeluaran, dan piutang usaha Anda 24 jam penuh hanya lewat chat WhatsApp."
+      content="Tinggalkan pembukuan manual. Admin virtual kami siap mencatat pemasukan, pengeluaran, dan memisahkan uang pribadi usaha Anda 24 jam penuh hanya lewat chat WhatsApp."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -203,19 +203,23 @@
         padding: 30px; box-shadow: var(--shadow);
         margin-top: 40px;
       }
-      .pg-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; align-items: center; }
-      .wa-mock { background: #efeae2; border-radius: 16px; overflow: hidden; border: 1px solid #ddd; }
-      .wa-head { background: #008069; color: white; padding: 12px 16px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+      .pg-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 30px; align-items: stretch; }
+      .wa-mock { background: #efeae2; border-radius: 16px; overflow: hidden; border: 1px solid #ddd; display: flex; flex-direction: column; }
+      .wa-head { background: #008069; color: white; padding: 12px 16px; font-weight: bold; display: flex; align-items: center; gap: 10px; flex: none; }
       .wa-head .av { width: 32px; height: 32px; background: #fff; border-radius: 50%; display: grid; place-items:center; color: #008069; font-size: 18px;}
-      .wa-body { padding: 20px; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23d0c9c0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E"); }
+      .wa-body { padding: 20px; flex-grow: 1; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23d0c9c0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E"); }
       .wa-bub { background: #d9fdd3; padding: 10px 14px; border-radius: 8px 0 8px 8px; font-size: 14px; color: #111; max-width: 90%; margin-left: auto; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
       .wa-bub-ai { background: #fff; border-radius: 0 8px 8px 8px; margin-left: 0; margin-right: auto; }
+      
+      .sheet-wrapper { display: flex; flex-direction: column; justify-content: center; }
       .sheet-mock { background: #fff; border-radius: 12px; padding: 4px; overflow-x: auto; border: 1px solid var(--line-soft);}
-      .sheet-mock table { width: 100%; border-collapse: collapse; font-size: 13px; font-family: sans-serif; color: #333; min-width: 400px;}
-      .sheet-mock th { background: #f1f3f4; padding: 8px; border: 1px solid #ccc; text-align: left; font-weight: 600;}
-      .sheet-mock td { padding: 8px; border: 1px solid #e0e0e0; }
-      .sheet-mock .val-in { color: #1e8e3e; font-weight: bold;}
-      .sheet-mock .val-out { color: #d93025; font-weight: bold;}
+      .sheet-mock table { width: 100%; border-collapse: collapse; font-size: 12.5px; font-family: sans-serif; color: #333; min-width: 500px;}
+      .sheet-mock th { background: #0f9d58; color: white; padding: 8px; border: 1px solid #ccc; text-align: left; font-weight: 600;}
+      .sheet-mock td { padding: 8px; border: 1px solid #e0e0e0; vertical-align: middle; }
+      .sheet-mock .val-in { font-weight: bold;}
+      .sheet-mock .val-out { font-weight: bold;}
+      .tag-usaha { background:#e8f0fe; color:#1967d2; padding:3px 7px; border-radius:4px; font-size:11px; font-weight: bold; }
+      .tag-pribadi { background:#fce8e6; color:#d93025; padding:3px 7px; border-radius:4px; font-size:11px; font-weight: bold; }
 
       .outcomes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto;}
       .oc { background: linear-gradient(160deg, var(--surface), var(--bg-2)); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 26px; }
@@ -262,7 +266,7 @@
         body { text-align: center; }
         .hero { padding: 20px 0 40px; }
         .pricing-grid { grid-template-columns: 1fr; gap: 36px; }
-        .card-dfy { transform: scale(1); } /* Disable scale on mobile */
+        .card-dfy { transform: scale(1); }
         .pain, .oc, .incl li { flex-direction: column; align-items: center; text-align: center; }
         .pain .x, .oc .ic { margin: 0 auto 10px; }
         .sheet-mock { border-radius: 8px; padding: 2px; }
@@ -291,7 +295,7 @@
               Tinggalkan Pembukuan Manual. <br><span class="u">Chat WA Saja</span>, Semua Laporan Beres.
             </h1>
             <p class="lead reveal">
-              Solusi cerdas untuk Pengusaha Laundry, Olshop & Jasa. Cukup ketik transaksi pakai bahasa sehari-hari, sistem otomatis merapikannya ke dalam tabel lengkap (Pemasukan, Pengeluaran, & Piutang). Tanpa perlu bayar gaji admin jutaan per bulan.
+              Solusi cerdas untuk Pengusaha Laundry, Olshop & Jasa. Cukup ketik transaksi pakai bahasa sehari-hari, sistem otomatis merapikannya ke dalam tabel lengkap (Pemasukan, Pengeluaran, & Pemisahan Uang Pribadi). Tanpa perlu bayar gaji admin jutaan per bulan.
             </p>
             <div class="hero-cta reveal">
               <a href="#order" class="btn btn-gold">Lihat Pilihan Paket →</a>
@@ -306,7 +310,7 @@
           <div class="sec-head reveal">
             <span class="eyebrow">Tinggal Chat, Tabel Terisi Sendiri</span>
             <h2>Lihat Betapa Mudahnya Mencatat Transaksi</h2>
-            <p>Admin Virtual kami paham singkatan dan bahasa gaul. Tidak perlu kode khusus yang ribet.</p>
+            <p>Admin Virtual kami paham bahasa gaul dan otomatis memisahkan uang usaha dengan uang pribadi Anda yang terpakai.</p>
           </div>
           
           <div class="playground-wrap reveal">
@@ -322,70 +326,70 @@
                 </div>
                 <div class="wa-body">
                   <div class="wa-bub">
-                    Trima cucian karpet Bu RT 100rb, bru bayar DP 50rb ya.
+                    Laku 15 bungkus nasi, 195rb.
                   </div>
                   <div class="wa-bub wa-bub-ai">
-                    ✅ Siap bos! Dicatat:<br>
-                    - Pemasukan (DP): Rp 50.000<br>
-                    - Piutang (Bu RT): Rp 50.000<br>
-                    Data tabel sudah diupdate!
+                    ✅ Dicatat:<br>
+                    - Kategori: Penjualan<br>
+                    - Jenis: <b>Usaha</b><br>
+                    - Uang Masuk: Rp 195.000
                   </div>
                   <div class="wa-bub">
-                    Beli token listrik ruko 200rb
+                    Ambil uang laci 200rb buat belanja bulanan rumah tangga.
                   </div>
                   <div class="wa-bub wa-bub-ai">
-                    ✅ Siap bos! Pengeluaran Operasional Rp 200.000 sudah masuk ke laporan.
+                    ⚠️ Dicatat sebagai Pengeluaran Pribadi!<br>
+                    - Kategori: Ambil untuk Pribadi<br>
+                    - Jenis: <b>Pribadi</b><br>
+                    - Uang Keluar: Rp 200.000<br>
+                    Laporan keuangan usaha Anda tetap aman.
                   </div>
                 </div>
               </div>
               
               <!-- Mockup Spreadsheet -->
-              <div>
+              <div class="sheet-wrapper">
                 <div style="margin-bottom: 15px; font-size: 14px; color: var(--gold-2); font-weight: bold; display: flex; align-items: center; gap: 8px;">
-                  <span>📊 Hasil Otomatis di Google Sheets Anda:</span>
+                  <span>📊 Buku Kas Anda Langsung Terupdate:</span>
                 </div>
                 <div class="sheet-mock">
                   <table>
                     <thead>
                       <tr>
-                        <th>Tanggal</th>
-                        <th>Kategori</th>
                         <th>Keterangan</th>
-                        <th>Masuk</th>
-                        <th>Keluar</th>
-                        <th>Piutang</th>
+                        <th>Kategori</th>
+                        <th>Jenis Uang</th>
+                        <th>Uang Masuk</th>
+                        <th>Uang Keluar</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>26 Sep</td>
-                        <td>Pemasukan</td>
-                        <td>Cucian karpet Bu RT (DP)</td>
-                        <td class="val-in">Rp 50.000</td>
-                        <td>-</td>
+                        <td>Jual 15 bungkus nasi</td>
+                        <td>Penjualan</td>
+                        <td><span class="tag-usaha">Usaha</span></td>
+                        <td class="val-in">195,000</td>
                         <td>-</td>
                       </tr>
                       <tr>
-                        <td>26 Sep</td>
-                        <td>Piutang</td>
-                        <td>Sisa bayaran Bu RT</td>
+                        <td>Bayar sewa warung</td>
+                        <td>Sewa Tempat</td>
+                        <td><span class="tag-usaha">Usaha</span></td>
                         <td>-</td>
-                        <td>-</td>
-                        <td class="val-out">Rp 50.000</td>
+                        <td class="val-out">1,000,000</td>
                       </tr>
                       <tr>
-                        <td>26 Sep</td>
-                        <td>Operasional</td>
-                        <td>Token listrik ruko</td>
-                        <td>-</td>
-                        <td class="val-out">Rp 200.000</td>
-                        <td>-</td>
+                        <td style="background:#fffcf2">Ambil belanja rumah</td>
+                        <td style="background:#fffcf2">Ambil Pribadi</td>
+                        <td style="background:#fffcf2"><span class="tag-pribadi">Pribadi</span></td>
+                        <td style="background:#fffcf2">-</td>
+                        <td class="val-out" style="background:#fffcf2; color:#d93025;">200,000</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <p style="font-size: 12px; color: var(--muted); margin-top: 15px; font-style: italic;">
-                  *Sistem otomatis memisahkan mana uang masuk riil, mana pengeluaran, dan mana uang yang masih mandek di pelanggan (Piutang).
+                  *Sistem memisahkan kolom "Jenis Uang" secara cerdas. Di halaman Laporan, laba rugi bisnis Anda dijamin tidak akan tercampur dengan pengeluaran pribadi (Masalah #1 UMKM).
                 </p>
               </div>
             </div>
@@ -404,7 +408,7 @@
               <div class="x">✕</div>
               <div>
                 <b>Uang Usaha & Pribadi Tercampur</b>
-                <p>Ambil uang dari laci toko buat belanja dapur tanpa dicatat. Akhir bulan bingung kenapa modal tidak muter.</p>
+                <p>Ambil uang dari laci toko buat belanja dapur tanpa dicatat. Laporan laba/rugi hancur dan akhir bulan bingung kenapa modal tidak muter.</p>
               </div>
             </div>
             <div class="pain reveal">
@@ -446,8 +450,8 @@
             </div>
             <div class="oc reveal">
               <div class="ic">🗂️</div>
-              <h3>Otomatis Pisah Uang</h3>
-              <p>Sistem langsung mengkategorikan mana Pemasukan, Pengeluaran, Laba/Rugi, Piutang, dan Tarik Tunai Pribadi secara real-time.</p>
+              <h3>Otomatis Pisah Uang Pribadi</h3>
+              <p>Sistem otomatis mengenali dan mengkategorikan pengeluaran pribadi agar tidak merusak angka Laba/Rugi murni usaha Anda.</p>
             </div>
             <div class="oc reveal">
               <div class="ic">🤖</div>
@@ -482,7 +486,7 @@
               </div>
               <ul class="incl">
                 <li><span class="c">✓</span> Akses 14 Video Tutorial Lengkap</li>
-                <li><span class="c">✓</span> Template Google Sheets Siap Pakai</li>
+                <li><span class="c">✓</span> Template Laporan Google Sheets Lengkap</li>
                 <li><span class="c">✓</span> Panduan Setup Asisten Mandiri</li>
                 <li class="x"><span class="c">✕</span> Anda harus merakit sistem sendiri dari nol</li>
                 <li class="x"><span class="c">✕</span> Tidak ada bantuan jika terjadi error teknis</li>
@@ -524,16 +528,16 @@
               <div class="ans">Tidak sama sekali (terutama jika Anda memilih Paket Terima Beres). Anda hanya butuh aplikasi WhatsApp atau Telegram untuk mencatat transaksi sehari-hari, sama seperti membalas chat pelanggan.</div>
             </details>
             <details class="reveal">
-              <summary>Apakah bisa tracking status cucian laundry/resi? <span class="pm">+</span></summary>
-              <div class="ans">Sistem utama ini fokus mengamankan Arus Kas (Pemasukan, Pengeluaran, Piutang) Anda terlebih dahulu. Untuk sistem operasional khusus (seperti tracking rak, status setrika, cetak resi thermal otomatis), tersedia paket Custom Build mulai dari Rp 1,5 Juta. Silakan hubungi kami untuk detailnya.</div>
+              <summary>Apakah bisa tracking status operasional / resi? <span class="pm">+</span></summary>
+              <div class="ans">Sistem utama ini fokus mengamankan Arus Kas (Pemasukan, Pengeluaran, Laba Rugi) Anda terlebih dahulu. Untuk sistem operasional khusus (seperti tracking rak, cetak resi thermal otomatis), tersedia paket Custom Build mulai dari Rp 1,5 Juta. Silakan hubungi kami untuk detailnya.</div>
             </details>
             <details class="reveal">
-              <summary>Bagaimana jika ada pelanggan yang kasbon/ngutang? <span class="pm">+</span></summary>
-              <div class="ans">Anda cukup chat: "Si A ngutang 50rb". Admin Virtual akan otomatis memasukkannya ke kolom Piutang khusus di tabel Anda. Jadi tidak ada lagi cerita catatan hutang hilang atau lupa ditagih.</div>
+              <summary>Bagaimana jika saya mencampur uang pribadi dan usaha? <span class="pm">+</span></summary>
+              <div class="ans">Tidak masalah! Cukup sebutkan saat chat (misal: "Ambil uang laci 50rb buat jajan"). Admin Virtual akan mencatatnya di kolom khusus "Pribadi" sehingga laporan laba/rugi bersih usaha Anda tidak akan rusak atau tercampur.</div>
             </details>
             <details class="reveal">
               <summary>Gaji Admin Virtual Rp 99.000/bulan itu untuk apa? <span class="pm">+</span></summary>
-              <div class="ans">Biaya tersebut murni untuk menutupi biaya operasional infrastruktur sistem berjalan otomatis 24 jam nonstop, tanpa membebani laptop/HP Anda. Jauh lebih murah daripada membayar paket internet dan gaji karyawan setiap bulannya.</div>
+              <div class="ans">Biaya tersebut murni untuk menutupi biaya operasional server dan pemrosesan pesan berjalan otomatis 24 jam nonstop, tanpa membebani laptop/HP Anda. Jauh lebih murah daripada membayar paket internet dan gaji karyawan setiap bulannya.</div>
             </details>
           </div>
         </div>
