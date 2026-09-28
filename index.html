@@ -271,37 +271,31 @@
         .pain .x, .oc .ic { margin: 0 auto 10px; }
         .faq summary, .faq .ans { text-align: left; }
         
-        /* === PERBAIKAN DEMO CHAT WA & TABEL DI MOBILE === */
-        .playground-wrap { 
-          padding: 18px 14px; /* Mengurangi padding agar ruang konten lebih lega */
-        }
-        .pg-grid {
-          gap: 24px;
-        }
-        .wa-body {
-          padding: 15px 12px; /* Mengurangi ruang kosong di dalam layar WA */
-        }
-        /* Mengembalikan posisi chat ke Kanan (User) dan Kiri (Admin Virtual) */
-        .wa-bub { 
-          margin-left: auto !important; 
-          margin-right: 0 !important;
-          margin-bottom: 12px;
-          text-align: left;
-        }
-        .wa-bub-ai { 
-          margin-left: 0 !important; 
-          margin-right: auto !important;
-        }
-        /* Memastikan tabel bisa digeser/scroll ke samping dengan mulus */
-        .sheet-wrapper {
-          width: 100%;
-          overflow: hidden;
-        }
+        /* === PERBAIKAN DEMO CHAT WA === */
+        .playground-wrap { padding: 18px 10px; }
+        .pg-grid { gap: 24px; }
+        .wa-body { padding: 15px 12px; }
+        .wa-bub { margin-left: auto !important; margin-right: 0 !important; margin-bottom: 12px; text-align: left; }
+        .wa-bub-ai { margin-left: 0 !important; margin-right: auto !important; }
+        
+        /* === PERBAIKAN TABEL AGAR MUAT 100% DI LAYAR HP === */
+        .sheet-wrapper { width: 100%; overflow: hidden; }
         .sheet-mock { 
           border-radius: 8px; 
-          padding: 0;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch; /* Smooth scroll khusus di iPhone */
+          padding: 2px;
+          overflow-x: hidden; 
+        }
+        .sheet-mock table {
+          min-width: 100% !important; /* Membatalkan paksaan lebar 500px */
+          font-size: 10.5px !important; /* Menyesuaikan ukuran teks untuk HP */
+        }
+        .sheet-mock th, .sheet-mock td {
+          padding: 6px 4px !important; /* Mempersempit jarak antar kolom */
+          word-wrap: break-word;
+        }
+        .tag-usaha, .tag-pribadi {
+          font-size: 9px !important;
+          padding: 2px 4px !important;
         }
       }
     </style>
