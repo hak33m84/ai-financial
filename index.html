@@ -196,30 +196,18 @@
       .pain b { font-weight: 800; font-size: 18px; display: block; margin-bottom: 5px; }
       .pain p { color: var(--muted); font-size: 14.5px; }
 
-      /* Custom Playground Section */
       .playground-wrap {
         background: linear-gradient(160deg, var(--surface-2), var(--surface));
-        border: 1px solid var(--line); border-radius: 24px;
-        padding: 30px; box-shadow: var(--shadow);
+        border: 1px solid var(--line); 
+        border-radius: 24px;
+        box-shadow: var(--shadow);
         margin-top: 40px;
+        padding: 0; 
+        overflow: hidden; 
+        position: relative;
+        /* Memastikan container memiliki background agar tidak murni transparan saat transisi */
+        background-color: #0f0d0b;
       }
-      .pg-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 30px; align-items: stretch; }
-      .wa-mock { background: #efeae2; border-radius: 16px; overflow: hidden; border: 1px solid #ddd; display: flex; flex-direction: column; }
-      .wa-head { background: #008069; color: white; padding: 12px 16px; font-weight: bold; display: flex; align-items: center; gap: 10px; flex: none; }
-      .wa-head .av { width: 32px; height: 32px; background: #fff; border-radius: 50%; display: grid; place-items:center; color: #008069; font-size: 18px;}
-      .wa-body { padding: 20px; flex-grow: 1; background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23d0c9c0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E"); }
-      .wa-bub { background: #d9fdd3; padding: 10px 14px; border-radius: 8px 0 8px 8px; font-size: 14px; color: #111; max-width: 90%; margin-left: auto; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-      .wa-bub-ai { background: #fff; border-radius: 0 8px 8px 8px; margin-left: 0; margin-right: auto; }
-      
-      .sheet-wrapper { display: flex; flex-direction: column; justify-content: center; }
-      .sheet-mock { background: #fff; border-radius: 12px; padding: 4px; overflow-x: auto; border: 1px solid var(--line-soft);}
-      .sheet-mock table { width: 100%; border-collapse: collapse; font-size: 12.5px; font-family: sans-serif; color: #333; min-width: 500px;}
-      .sheet-mock th { background: #0f9d58; color: white; padding: 8px; border: 1px solid #ccc; text-align: left; font-weight: 600;}
-      .sheet-mock td { padding: 8px; border: 1px solid #e0e0e0; vertical-align: middle; }
-      .sheet-mock .val-in { font-weight: bold;}
-      .sheet-mock .val-out { font-weight: bold;}
-      .tag-usaha { background:#e8f0fe; color:#1967d2; padding:3px 7px; border-radius:4px; font-size:11px; font-weight: bold; }
-      .tag-pribadi { background:#fce8e6; color:#d93025; padding:3px 7px; border-radius:4px; font-size:11px; font-weight: bold; }
 
       .outcomes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto;}
       .oc { background: linear-gradient(160deg, var(--surface), var(--bg-2)); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 26px; }
@@ -227,7 +215,6 @@
       .oc h3 { font-size: 19px; margin-bottom: 8px; }
       .oc p { color: var(--muted); font-size: 14.5px; }
 
-      /* Custom Pricing Comparison Grid */
       .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; margin: 0 auto; align-items: stretch;}
       .card-diy { background: linear-gradient(160deg, var(--surface), var(--bg-2)); border: 1px solid var(--line-soft); border-radius: 24px; padding: 36px 30px; opacity: 0.95; display: flex; flex-direction: column;}
       .card-dfy { background: linear-gradient(160deg, var(--surface-2), var(--surface)); border: 2px solid var(--gold); border-radius: 24px; padding: 36px 30px; box-shadow: 0 30px 60px -20px rgba(232, 185, 72, 0.25); position: relative; transform: scale(1.03); z-index: 2; display: flex; flex-direction: column;}
@@ -258,7 +245,6 @@
       .reveal.in { opacity: 1; transform: none; }
 
       @media (max-width: 900px) {
-        .pg-grid { grid-template-columns: 1fr; }
         .pains, .outcomes { grid-template-columns: 1fr; }
       }
 
@@ -270,54 +256,29 @@
         .pain, .oc, .incl li { flex-direction: column; align-items: center; text-align: center; }
         .pain .x, .oc .ic { margin: 0 auto 10px; }
         .faq summary, .faq .ans { text-align: left; }
-        
-        /* === PERBAIKAN DEMO CHAT WA === */
-        .playground-wrap { padding: 18px 10px; }
-        .pg-grid { gap: 24px; }
-        .wa-body { padding: 15px 12px; }
-        .wa-bub { margin-left: auto !important; margin-right: 0 !important; margin-bottom: 12px; text-align: left; }
-        .wa-bub-ai { margin-left: 0 !important; margin-right: auto !important; }
-        
-        /* === PERBAIKAN TABEL AGAR MUAT 100% DI LAYAR HP === */
-        .sheet-wrapper { width: 100%; overflow: hidden; }
-        .sheet-mock { 
-          border-radius: 8px; 
-          padding: 2px;
-          overflow-x: hidden; 
-        }
-        .sheet-mock table {
-          min-width: 100% !important; /* Membatalkan paksaan lebar 500px */
-          font-size: 10.5px !important; /* Menyesuaikan ukuran teks untuk HP */
-        }
-        .sheet-mock th, .sheet-mock td {
-          padding: 6px 4px !important; /* Mempersempit jarak antar kolom */
-          word-wrap: break-word;
-        }
-        .tag-usaha, .tag-pribadi {
-          font-size: 9px !important;
-          padding: 2px 4px !important;
-        }
       }
     </style>
+
     <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1795577365019309');
-fbq('track', 'PageView');  
-fbq('track', 'ViewContent');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1795577365019309');
+      fbq('track', 'PageView');  
+      fbq('track', 'ViewContent');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
   </head>
+
   <body>
     <div class="topbar">
       ⚡ PROMO SPESIAL BULAN INI &nbsp;•&nbsp; Gratis Biaya Operasional Bulan Pertama untuk Paket Terima Beres
@@ -348,6 +309,7 @@ src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
         </div>
       </section>
 
+      <!-- SECTION DEMO YANG SUDAH DIPERBAIKI -->
       <section class="sec" style="background: rgba(245, 243, 238, 0.02);" id="demo">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -356,12 +318,12 @@ src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
             <p>Admin Virtual kami paham bahasa gaul dan otomatis memisahkan uang usaha dengan uang pribadi Anda yang terpakai.</p>
           </div>
           
-          <div class="playground-wrap reveal" style="padding: 0; overflow: hidden; position: relative; border-radius: 24px;">
-            <!-- Poster -->
-            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" style="width: 100%; height: auto; display: block; cursor: pointer; transition: opacity 0.5s;">
+          <div class="playground-wrap reveal">
+            <!-- Gambar poster ditampilkan sebagai balok utama (block) -->
+            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" style="width: 100%; height: auto; display: block; cursor: pointer;">
             
-            <!-- Video -->
-            <video id="demoVideo" loop muted playsinline preload="none" style="width: 100%; height: auto; position: absolute; top: 0; left: 0; opacity: 0; pointer-events: none;">
+            <!-- Video disembunyikan awalnya, dan akan menggantikan poster secara normal (bukan absolute) -->
+            <video id="demoVideo" loop muted playsinline preload="none" style="width: 100%; height: auto; display: none;">
               <source data-src="demo-admin.mp4" type="video/mp4">
               Maaf, browser Anda tidak mendukung pemutaran video.
             </video>
@@ -528,7 +490,7 @@ src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
       </div>
     </footer>
 
-   <script>
+    <script>
       // ==========================================
       // 1. SCRIPT ANIMASI SCROLL (BAWAAN)
       // ==========================================
@@ -547,35 +509,63 @@ src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
       });
 
       // ==========================================
-      // 2. SCRIPT LAZY LOAD VIDEO DEMO (BARU)
+      // 2. SCRIPT LAZY LOAD VIDEO DEMO (FINAL FIX)
       // ==========================================
       document.addEventListener("DOMContentLoaded", function() {
         const video = document.getElementById("demoVideo");
         const poster = document.getElementById("vid-poster");
+        let isVideoLoaded = false;
         
-        if (video) {
+        if (video && poster) {
+          // Fungsi utama untuk mulai memutar video
+          const playVideo = () => {
+            if (!isVideoLoaded) {
+              const source = video.querySelector("source");
+              source.src = source.getAttribute("data-src");
+              video.load();
+              isVideoLoaded = true;
+            }
+            
+            const playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+              playPromise.then(_ => {
+                // Video berhasil dimuat dan diputar -> Ganti tampilan secara aman
+                poster.style.display = "none";
+                video.style.display = "block";
+              }).catch(error => {
+                // Jika Autoplay diblokir (biasanya di HP Safari/Chrome)
+                console.log("Autoplay diblokir browser:", error);
+                poster.title = "Klik untuk memutar video demo";
+              });
+            }
+          };
+
+          // Observer: Pantau gambar poster karena ia yang saat ini memakan ruang di layar
           const videoObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                const source = video.querySelector("source");
-                // Pindahkan data-src ke src untuk memulai unduhan
-                source.src = source.getAttribute("data-src");
-                video.load();
-                
-                // Setelah video siap, sembunyikan poster dan putar video
-                video.oncanplay = function() {
-                  poster.style.display = "none";
-                  video.style.display = "block";
-                  video.play();
-                };
-                
-                // Hentikan observer setelah video diputar
-                observer.unobserve(video);
+                playVideo();
+                observer.unobserve(poster); 
               }
             });
           }, { threshold: 0.1 }); 
           
-          videoObserver.observe(video);
+          videoObserver.observe(poster);
+
+          // FALLBACK KLIK: Jika autoplay diblokir HP, pengunjung bisa menekan posternya langsung
+          poster.addEventListener("click", () => {
+            playVideo();
+          });
+          
+          // Izinkan video dipause/diplay dengan cara ditekan
+          video.addEventListener("click", () => {
+             if(video.paused) {
+                 video.play();
+             } else {
+                 video.pause();
+             }
+          });
         }
       });
     </script>
