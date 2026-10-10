@@ -197,7 +197,7 @@
       .pain p { color: var(--muted); font-size: 14.5px; }
 
       .playground-wrap {
-        background: linear-gradient(160deg, var(--surface-2), var(--surface));
+        background-color: #0f0d0b;
         border: 1px solid var(--line); 
         border-radius: 24px;
         box-shadow: var(--shadow);
@@ -205,8 +205,33 @@
         padding: 0; 
         overflow: hidden; 
         position: relative;
-        /* Memastikan container memiliki background agar tidak murni transparan saat transisi */
-        background-color: #0f0d0b;
+        cursor: pointer;
+      }
+      .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 72px;
+        height: 72px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid var(--gold-2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        transition: transform 0.2s, background 0.2s;
+      }
+      .playground-wrap:hover .play-btn {
+        transform: translate(-50%, -50%) scale(1.1);
+        background: rgba(232, 185, 72, 0.2);
+      }
+      .play-btn svg {
+        width: 32px;
+        height: 32px;
+        fill: var(--gold-2);
+        margin-left: 6px; /* menyesuaikan posisi panah play agar center */
       }
 
       .outcomes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto;}
@@ -309,7 +334,7 @@
         </div>
       </section>
 
-      <!-- SECTION DEMO YANG SUDAH DIPERBAIKI -->
+      <!-- SECTION DEMO KLIK UNTUK MEMUTAR -->
       <section class="sec" style="background: rgba(245, 243, 238, 0.02);" id="demo">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -318,12 +343,18 @@
             <p>Admin Virtual kami paham bahasa gaul dan otomatis memisahkan uang usaha dengan uang pribadi Anda yang terpakai.</p>
           </div>
           
-          <div class="playground-wrap reveal">
-            <!-- Gambar poster ditampilkan sebagai balok utama (block) -->
-            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" style="width: 100%; height: auto; display: block; cursor: pointer;">
+          <div class="playground-wrap reveal" id="video-container">
+            <!-- Gambar poster yang tampil pertama kali -->
+            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" style="width: 100%; height: auto; display: block;">
             
-            <!-- Video disembunyikan awalnya, dan akan menggantikan poster secara normal (bukan absolute) -->
-            <video id="demoVideo" loop muted playsinline preload="none" style="width: 100%; height: auto; display: none;">
+            <!-- Tombol Play besar di tengah -->
+            <div class="play-btn" id="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            
+            <!-- Video yang ditahan 100% sampai diklik -->
+            <!-- Saya menambahkan atribut 'controls' agar user punya kebebasan pause/play setelah diklik -->
+            <video id="demoVideo" loop playsinline preload="none" controls style="width: 100%; height: auto; display: none;">
               <source data-src="demo-admin.mp4" type="video/mp4">
               Maaf, browser Anda tidak mendukung pemutaran video.
             </video>
@@ -509,16 +540,18 @@
       });
 
       // ==========================================
-      // 2. SCRIPT LAZY LOAD VIDEO DEMO (FINAL FIX)
+      // 2. SCRIPT CLICK-TO-PLAY VIDEO (LCP AMAN)
       // ==========================================
       document.addEventListener("DOMContentLoaded", function() {
+        const videoContainer = document.getElementById("video-container");
         const video = document.getElementById("demoVideo");
         const poster = document.getElementById("vid-poster");
+        const playBtn = document.getElementById("play-btn");
         let isVideoLoaded = false;
         
-        if (video && poster) {
-          // Fungsi utama untuk mulai memutar video
-          const playVideo = () => {
+        if (video && poster && videoContainer) {
+          // Hanya muat dan putar video SAAT DIKLIK
+          videoContainer.addEventListener("click", () => {
             if (!isVideoLoaded) {
               const source = video.querySelector("source");
               source.src = source.getAttribute("data-src");
@@ -530,41 +563,16 @@
             
             if (playPromise !== undefined) {
               playPromise.then(_ => {
-                // Video berhasil dimuat dan diputar -> Ganti tampilan secara aman
+                // Sembunyikan poster dan icon play
                 poster.style.display = "none";
+                if (playBtn) playBtn.style.display = "none";
+                
+                // Tampilkan video yang sedang berputar
                 video.style.display = "block";
               }).catch(error => {
-                // Jika Autoplay diblokir (biasanya di HP Safari/Chrome)
-                console.log("Autoplay diblokir browser:", error);
-                poster.title = "Klik untuk memutar video demo";
+                console.log("Pemutaran video gagal:", error);
               });
             }
-          };
-
-          // Observer: Pantau gambar poster karena ia yang saat ini memakan ruang di layar
-          const videoObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                playVideo();
-                observer.unobserve(poster); 
-              }
-            });
-          }, { threshold: 0.1 }); 
-          
-          videoObserver.observe(poster);
-
-          // FALLBACK KLIK: Jika autoplay diblokir HP, pengunjung bisa menekan posternya langsung
-          poster.addEventListener("click", () => {
-            playVideo();
-          });
-          
-          // Izinkan video dipause/diplay dengan cara ditekan
-          video.addEventListener("click", () => {
-             if(video.paused) {
-                 video.play();
-             } else {
-                 video.pause();
-             }
           });
         }
       });
