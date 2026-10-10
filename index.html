@@ -356,12 +356,12 @@ src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
             <p>Admin Virtual kami paham bahasa gaul dan otomatis memisahkan uang usaha dengan uang pribadi Anda yang terpakai.</p>
           </div>
           
-          <div class="playground-wrap reveal" style="padding: 0; overflow: hidden; position: relative;">
-            <!-- Gambar sampul super ringan yang tampil pertama kali -->
-            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" style="width: 100%; height: auto; display: block; border-radius: 24px;">
+          <div class="playground-wrap reveal" style="padding: 0; overflow: hidden; position: relative; border-radius: 24px;">
+            <!-- Poster -->
+            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" style="width: 100%; height: auto; display: block; cursor: pointer; transition: opacity 0.5s;">
             
-            <!-- Tag video yang ditahan proses download-nya (perhatikan atribut data-src) -->
-            <video id="demoVideo" loop muted playsinline style="width: 100%; height: auto; display: none; border-radius: 24px;">
+            <!-- Video -->
+            <video id="demoVideo" loop muted playsinline preload="none" style="width: 100%; height: auto; position: absolute; top: 0; left: 0; opacity: 0; pointer-events: none;">
               <source data-src="demo-admin.mp4" type="video/mp4">
               Maaf, browser Anda tidak mendukung pemutaran video.
             </video>
