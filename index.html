@@ -357,85 +357,16 @@ src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
           </div>
           
           <div class="playground-wrap reveal">
-            <div class="pg-grid">
-              <!-- Mockup WA -->
-              <div class="wa-mock">
-                <div class="wa-head">
-                  <div class="av">🤖</div>
-                  <div>
-                    <div style="font-size: 15px; line-height: 1;">Admin Virtual Usaha</div>
-                    <div style="font-size: 11px; font-weight: normal; color: #cbf4c9;">Online 24 Jam</div>
-                  </div>
-                </div>
-                <div class="wa-body">
-                  <div class="wa-bub">
-                    Laku 15 bungkus nasi, 195rb.
-                  </div>
-                  <div class="wa-bub wa-bub-ai">
-                    ✅ Dicatat:<br>
-                    - Kategori: Penjualan<br>
-                    - Jenis: <b>Usaha</b><br>
-                    - Uang Masuk: Rp 195.000
-                  </div>
-                  <div class="wa-bub">
-                    Ambil uang laci 200rb buat belanja bulanan rumah tangga.
-                  </div>
-                  <div class="wa-bub wa-bub-ai">
-                    ⚠️ Dicatat sebagai Pengeluaran Pribadi!<br>
-                    - Kategori: Ambil untuk Pribadi<br>
-                    - Jenis: <b>Pribadi</b><br>
-                    - Uang Keluar: Rp 200.000<br>
-                    Laporan keuangan usaha Anda tetap aman.
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Mockup Spreadsheet -->
-              <div class="sheet-wrapper">
-                <div style="margin-bottom: 15px; font-size: 14px; color: var(--gold-2); font-weight: bold; display: flex; align-items: center; gap: 8px;">
-                  <span>📊 Buku Kas Anda Langsung Terupdate:</span>
-                </div>
-                <div class="sheet-mock">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Keterangan</th>
-                        <th>Kategori</th>
-                        <th>Jenis Uang</th>
-                        <th>Uang Masuk</th>
-                        <th>Uang Keluar</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Jual 15 bungkus nasi</td>
-                        <td>Penjualan</td>
-                        <td><span class="tag-usaha">Usaha</span></td>
-                        <td class="val-in">195,000</td>
-                        <td>-</td>
-                      </tr>
-                      <tr>
-                        <td>Bayar sewa warung</td>
-                        <td>Sewa Tempat</td>
-                        <td><span class="tag-usaha">Usaha</span></td>
-                        <td>-</td>
-                        <td class="val-out">1,000,000</td>
-                      </tr>
-                      <tr>
-                        <td style="background:#fffcf2">Ambil belanja rumah</td>
-                        <td style="background:#fffcf2">Ambil Pribadi</td>
-                        <td style="background:#fffcf2"><span class="tag-pribadi">Pribadi</span></td>
-                        <td style="background:#fffcf2">-</td>
-                        <td class="val-out" style="background:#fffcf2; color:#d93025;">200,000</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p style="font-size: 12px; color: var(--muted); margin-top: 15px; font-style: italic;">
-                  *Sistem memisahkan kolom "Jenis Uang" secara cerdas. Di halaman Laporan, laba rugi bisnis Anda dijamin tidak akan tercampur dengan pengeluaran pribadi (Masalah #1 UMKM).
-                </p>
-              </div>
-            </div>
+            <div class="playground-wrap reveal" style="padding: 0; overflow: hidden; position: relative;">
+            <!-- Gambar sampul super ringan yang tampil pertama kali -->
+            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" style="width: 100%; height: auto; display: block; border-radius: 24px;">
+            
+            <!-- Tag video yang ditahan proses download-nya (perhatikan atribut data-src) -->
+            <video id="demoVideo" loop muted playsinline style="width: 100%; height: auto; display: none; border-radius: 24px;">
+              <source data-src="demo-admin.mp4" type="video/mp4">
+              Maaf, browser Anda tidak mendukung pemutaran video.
+            </video>
+          </div>
           </div>
         </div>
       </section>
@@ -599,7 +530,10 @@ src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
       </div>
     </footer>
 
-    <script>
+   <script>
+      // ==========================================
+      // 1. SCRIPT ANIMASI SCROLL (BAWAAN)
+      // ==========================================
       const io = new IntersectionObserver((es) => {
         es.forEach((e) => {
           if (e.isIntersecting) {
@@ -612,6 +546,39 @@ src="https://www.facebook.com/tr?id=1795577365019309&ev=PageView&noscript=1"
       document.querySelectorAll('.reveal').forEach((el, i) => {
         el.style.transitionDelay = Math.min(i % 4, 3) * 0.08 + 's';
         io.observe(el);
+      });
+
+      // ==========================================
+      // 2. SCRIPT LAZY LOAD VIDEO DEMO (BARU)
+      // ==========================================
+      document.addEventListener("DOMContentLoaded", function() {
+        const video = document.getElementById("demoVideo");
+        const poster = document.getElementById("vid-poster");
+        
+        if (video) {
+          const videoObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const source = video.querySelector("source");
+                // Pindahkan data-src ke src untuk memulai unduhan
+                source.src = source.getAttribute("data-src");
+                video.load();
+                
+                // Setelah video siap, sembunyikan poster dan putar video
+                video.oncanplay = function() {
+                  poster.style.display = "none";
+                  video.style.display = "block";
+                  video.play();
+                };
+                
+                // Hentikan observer setelah video diputar
+                observer.unobserve(video);
+              }
+            });
+          }, { threshold: 0.1 }); 
+          
+          videoObserver.observe(video);
+        }
       });
     </script>
   </body>
