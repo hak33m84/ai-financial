@@ -344,8 +344,8 @@
           </div>
           
           <div class="playground-wrap reveal" id="video-container">
-            <!-- Gambar poster yang tampil pertama kali -->
-            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" style="width: 100%; height: auto; display: block;">
+            <!-- Penambahan width="1376" height="768" dan fetchpriority="high" -->
+            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" width="1376" height="768" fetchpriority="high" style="width: 100%; height: auto; display: block;">
             
             <!-- Tombol Play besar di tengah -->
             <div class="play-btn" id="play-btn">
@@ -353,7 +353,6 @@
             </div>
             
             <!-- Video yang ditahan 100% sampai diklik -->
-            <!-- Saya menambahkan atribut 'controls' agar user punya kebebasan pause/play setelah diklik -->
             <video id="demoVideo" loop playsinline preload="none" controls style="width: 100%; height: auto; display: none;">
               <source data-src="demo-admin.mp4" type="video/mp4">
               Maaf, browser Anda tidak mendukung pemutaran video.
@@ -443,8 +442,8 @@
           
           <div class="reveal" style="text-align: center; max-width: 980px; margin: 0 auto;">
             <div style="background: linear-gradient(160deg, var(--surface-2), var(--surface)); border: 1px solid var(--gold); border-radius: 24px; padding: 12px; box-shadow: 0 40px 100px -30px rgba(232, 185, 72, 0.25);">
-              <!-- Ganti 'cover.jpg' dengan path/URL gambar dashboard Anda -->
-              <img src="cover.webp" alt="Dashboard AI Pembukuan UMKM" style="width: 100%; height: auto; border-radius: 16px; display: block;">
+              <!-- Penambahan width="1200" height="896" dan loading="lazy" -->
+              <img src="cover.webp" alt="Dashboard AI Pembukuan UMKM" width="1200" height="896" loading="lazy" style="width: 100%; height: auto; border-radius: 16px; display: block;">
             </div>
             <p style="font-size: 14.5px; color: var(--muted); margin-top: 24px; font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto;">
               *Visualisasi nyata dari laporan keuangan Anda. Angka Pemasukan, Laba Bersih, dan Uang Pribadi yang terpakai akan otomatis ter-update setiap kali Anda mengirim chat ke Admin Virtual.
