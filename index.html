@@ -347,28 +347,67 @@
       </section>
 
       <!-- SECTION DEMO KLIK UNTUK MEMUTAR -->
+      <!-- SECTION DEMO KLIK UNTUK MEMUTAR (CRO OPTIMIZED) -->
       <section class="sec" style="background: rgba(245, 243, 238, 0.02);" id="demo">
         <div class="wrap">
           <div class="sec-head reveal">
             <span class="eyebrow">Tinggal Chat, Tabel Terisi Sendiri</span>
             <h2>Lihat Betapa Mudahnya Mencatat Transaksi</h2>
-            <p>Admin Virtual kami paham bahasa gaul dan otomatis memisahkan uang usaha dengan uang pribadi Anda yang terpakai.</p>
+            <p>Sistem ini dirancang khusus untuk Anda yang sibuk. Tonton video 15 detik ini untuk melihat bagaimana chat biasa otomatis menjadi laporan rapi.</p>
           </div>
           
-          <div class="playground-wrap reveal" id="video-container">
-            <!-- Penambahan width="1376" height="768" dan fetchpriority="high" -->
-            <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" width="1376" height="768" fetchpriority="high" style="width: 100%; height: auto; display: block;">
+          <!-- Wrapper Video dengan desain Glassmorphism / Modern Player -->
+          <div class="playground-wrap reveal" id="video-container" style="
+            background-color: #1a1a1a;
+            border: 1px solid rgba(232, 185, 72, 0.3); 
+            border-radius: 20px;
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 40px -10px rgba(232, 185, 72, 0.1);
+            margin-top: 40px;
+            padding: 8px; /* Bingkai tipis elegan */
+            overflow: hidden; 
+            position: relative;
+            cursor: pointer;
+            max-width: 800px; /* Lebar dibatasi agar proporsional */
+            margin-left: auto;
+            margin-right: auto;
+          ">
             
-            <!-- Tombol Play besar di tengah -->
-            <div class="play-btn" id="play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <div style="position: relative; border-radius: 14px; overflow: hidden; background: #000;">
+              <!-- GANTI GAMBAR INI: Gunakan screenshot asli dari video Anda, jangan desain futuristik -->
+              <img id="vid-poster" src="poster-demo.webp" alt="Demo Admin Virtual" width="800" height="450" style="width: 100%; height: auto; display: block; opacity: 0.85; transition: opacity 0.3s;">
+              
+              <!-- Tombol Play Minimalis & Trustworthy -->
+              <div class="play-btn" id="play-btn" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80px;
+                height: 80px;
+                background: rgba(232, 185, 72, 0.9);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+                box-shadow: 0 10px 30px rgba(232, 185, 72, 0.4);
+                transition: transform 0.2s;
+              ">
+                <svg viewBox="0 0 24 24" style="width: 36px; height: 36px; fill: #111; margin-left: 6px;"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              
+              <!-- Video Player -->
+              <video id="demoVideo" loop playsinline preload="none" controls style="width: 100%; height: auto; display: none; border-radius: 14px;">
+                <source data-src="demo-admin.mp4" type="video/mp4">
+                Maaf, browser Anda tidak mendukung pemutaran video.
+              </video>
             </div>
             
-            <!-- Video yang ditahan 100% sampai diklik -->
-            <video id="demoVideo" loop playsinline preload="none" controls style="width: 100%; height: auto; display: none;">
-              <source data-src="demo-admin.mp4" type="video/mp4">
-              Maaf, browser Anda tidak mendukung pemutaran video.
-            </video>
+            <!-- Teks bantuan halus di bawah video -->
+            <div id="click-hint" style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 12px; margin-bottom: 4px; font-weight: 600; letter-spacing: 0.05em;">
+              👆 KLIK UNTUK MEMUTAR VIDEO DEMO (15 DETIK)
+            </div>
+
           </div>
         </div>
       </section>
