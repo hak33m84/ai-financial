@@ -558,6 +558,77 @@
           </div>
         </div>
       </section>
+      <!-- SECTION AUTHORITY / CREDIBILITY (PENGGANTI TESTIMONI) -->
+      <section class="sec" style="background: rgba(232, 185, 72, 0.03); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <span class="eyebrow">Mengapa Anda Bisa Percaya Sistem Kami?</span>
+            <h2>Teruji di Lingkungan Kritis Bandara.<br>Kini Hadir untuk Bisnis Anda.</h2>
+          </div>
+          
+          <div class="reveal" style="
+            max-width: 900px; 
+            margin: 0 auto; 
+            background: linear-gradient(160deg, var(--surface-2), var(--surface)); 
+            border: 1px solid var(--gold); 
+            border-radius: 24px; 
+            padding: 40px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+            align-items: center;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+          ">
+            
+            <!-- Kolom Kiri: Cerita Asal Usul yang Jujur -->
+            <div>
+              <div style="font-size: 32px; margin-bottom: 16px;">✈️</div>
+              <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--gold-2);">Teknologi Enterprise, Harga UMKM</h3>
+              <p style="color: var(--muted); font-size: 15px; margin-bottom: 16px;">
+                Sejujurnya, mesin di balik Admin Virtual ini awalnya kami rancang secara khusus untuk menangani <b>Sistem Laporan Maintenance di salah satu Bandara</b>. Sebuah lingkungan di mana data tidak boleh hilang, tidak boleh <i>error</i>, dan harus bekerja cepat 24 jam nonstop.
+              </p>
+              <p style="color: var(--muted); font-size: 15px;">
+                Melihat betapa tangguhnya sistem otomatisasi <i>chat-to-database</i> ini, kami memutuskan untuk menyederhanakan tampilannya agar bisa digunakan oleh pengusaha Laundry, Kuliner, dan Jasa untuk menyelamatkan laporan keuangan mereka.
+              </p>
+            </div>
+            
+            <!-- Kolom Kanan: Poin Keandalan -->
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: center;">
+                <div style="font-size: 24px;">🔒</div>
+                <div>
+                  <h4 style="font-size: 16px; margin-bottom: 4px;">Akurasi Tingkat Tinggi</h4>
+                  <p style="font-size: 13px; color: var(--muted); margin: 0;">Sistem yang sama digunakan untuk log pemeliharaan bandara.</p>
+                </div>
+              </div>
+              
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: center;">
+                <div style="font-size: 24px;">⚡</div>
+                <div>
+                  <h4 style="font-size: 16px; margin-bottom: 4px;">Server Anti-Down</h4>
+                  <p style="font-size: 13px; color: var(--muted); margin: 0;">Infrastruktur cloud yang stabil menangani ribuan chat tanpa antre.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <!-- Catatan CSS khusus Mobile untuk section ini -->
+          <style>
+            @media (max-width: 768px) {
+              .sec[style*="border-top"] > .wrap > div:nth-child(2) {
+                grid-template-columns: 1fr !important;
+                padding: 24px !important;
+                text-align: center;
+              }
+              .sec[style*="border-top"] > .wrap > div:nth-child(2) > div:nth-child(2) > div {
+                text-align: left;
+              }
+            }
+          </style>
+
+        </div>
+      </section>
       
       <section class="sec" id="order">
         <div class="wrap">
