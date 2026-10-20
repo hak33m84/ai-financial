@@ -760,17 +760,18 @@
       });
 
       // ==========================================
-      // 2. SCRIPT CLICK-TO-PLAY VIDEO (LCP AMAN)
+      // 2. SCRIPT VIDEO: CLICK-TO-PLAY & AUTO-PAUSE SAAT SCROLL
       // ==========================================
       document.addEventListener("DOMContentLoaded", function() {
         const videoContainer = document.getElementById("video-container");
         const video = document.getElementById("demoVideo");
         const poster = document.getElementById("vid-poster");
         const playBtn = document.getElementById("play-btn");
+        const clickHint = document.getElementById("click-hint");
         let isVideoLoaded = false;
         
         if (video && poster && videoContainer) {
-          // Hanya muat dan putar video SAAT DIKLIK
+          // 1. Fungsi Klik untuk Memutar Video
           videoContainer.addEventListener("click", () => {
             if (!isVideoLoaded) {
               const source = video.querySelector("source");
@@ -779,23 +780,37 @@
               isVideoLoaded = true;
             }
             
-            const playPromise = video.play();
-            
-            if (playPromise !== undefined) {
-              playPromise.then(_ => {
-                // Sembunyikan poster dan icon play
-                poster.style.display = "none";
-                if (playBtn) playBtn.style.display = "none";
-                
-                // Tampilkan video yang sedang berputar
-                video.style.display = "block";
-              }).catch(error => {
-                console.log("Pemutaran video gagal:", error);
-              });
+            // Putar video jika sedang pause
+            if (video.paused) {
+              const playPromise = video.play();
+              
+              if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                  // Sembunyikan elemen poster & tombol awal
+                  poster.style.display = "none";
+                  if (playBtn) playBtn.style.display = "none";
+                  if (clickHint) clickHint.style.display = "none";
+                  
+                  video.style.display = "block";
+                }).catch(error => {
+                  console.log("Pemutaran video tertahan:", error);
+                });
+              }
             }
           });
+
+          // 2. Fungsi Auto-Pause saat Scroll Keluar Layar
+          const pauseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              // Jika video sudah loading, sedang tidak dipause, dan KELUAR dari layar
+              if (!entry.isIntersecting && isVideoLoaded && !video.paused) {
+                video.pause(); // Hentikan video
+              }
+            });
+          }, { threshold: 0.05 }); // Terpicu saat kurang dari 5% bagian video terlihat
+          
+          pauseObserver.observe(videoContainer);
         }
       });
-    </script>
   </body>
 </html>
