@@ -231,7 +231,7 @@
         width: 32px;
         height: 32px;
         fill: var(--gold-2);
-        margin-left: 6px; /* menyesuaikan posisi panah play agar center */
+        margin-left: 6px; 
       }
 
       .outcomes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto;}
@@ -243,7 +243,7 @@
       .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; margin: 0 auto; align-items: stretch;}
       .card-diy { 
         background: linear-gradient(160deg, var(--surface), var(--bg-2)); 
-        border: 1px solid #333333; /* <-- Border halus abu-abu gelap */
+        border: 1px solid #333333; 
         border-radius: 24px; 
         padding: 36px 30px; 
         opacity: 0.95; 
@@ -321,7 +321,7 @@
   </head>
 
   <body>
-    <!-- PERBAIKAN TOPBAR -->
+    <!-- TOPBAR TERBARU -->
     <div class="topbar">
       ⚡ PROMO SPESIAL BULAN INI &nbsp;•&nbsp; Bebas Biaya Bulanan & Gratis Server 1 Tahun untuk Paket Terima Beres
     </div>
@@ -609,6 +609,7 @@
         </div>
       </section>
       
+      <!-- PERBAIKAN LIST HARGA (MENGGUNAKAN SPAN) -->
       <section class="sec" id="order">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -679,6 +680,7 @@
         </div>
       </section>
 
+      <!-- PERBAIKAN SECTION FAQ -->
       <section class="sec">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -698,15 +700,16 @@
               <summary>Bagaimana jika saya mencampur uang pribadi dan usaha? <span class="pm">+</span></summary>
               <div class="ans">Tidak masalah! Cukup sebutkan saat chat (misal: "Ambil uang laci 50rb buat jajan"). Admin Virtual akan mencatatnya di kolom khusus "Pribadi" sehingga laporan laba/rugi bersih usaha Anda tidak akan rusak atau tercampur.</div>
             </details>
+            
             <details class="reveal">
               <summary>Apakah ada biaya bulanan (langganan)? <span class="pm">+</span></summary>
               <div class="ans">Kabar baiknya: <b>TIDAK ADA!</b> Jika Anda mengambil Paket Terima Beres, Anda sudah mendapatkan GRATIS biaya operasional Server Cloud dan Token selama 1 Tahun Penuh. Anda baru akan membayar perpanjangan server di tahun ke-2, itu pun biayanya sangat murah (hanya sekitar Rp 199.000 per TAHUN, atau setara 16 ribuan per bulan). Sangat ramah untuk kas UMKM.</div>
             </details>
-            <!-- FAQ BARU TENTANG KUOTA TRANSAKSI (FUP) -->
+
             <details class="reveal">
               <summary>Apakah ada batasan jumlah chat per harinya? <span class="pm">+</span></summary>
               <div class="ans">
-                Untuk menjaga agar sistem tetap cepat dan tidak *error*, Paket Terima Beres sudah mencakup <b>Gratis Kuota hingga 1.500 chat transaksi per bulan</b> (sekitar 50 nota transaksi setiap hari). 
+                Untuk menjaga agar sistem tetap cepat dan tidak <i>error</i>, Paket Terima Beres sudah mencakup <b>Gratis Kuota hingga 1.500 chat transaksi per bulan</b> (sekitar 50 nota transaksi setiap hari). 
                 <br><br>
                 Bagi 90% UMKM, kuota ini sangat berlebih. Namun, jika bisnis Anda sedang sangat ramai dan melebihi kuota tersebut, jangan khawatir! Biaya isi ulang (top-up) kuota tambahan sangatlah murah, hanya sekitar Rp 25.000 untuk ribuan transaksi berikutnya.
               </div>
