@@ -283,7 +283,14 @@
 
       @media (max-width: 640px) {
         body { text-align: center; }
-        .hero { padding: 20px 0 40px; }
+        
+        /* --- KODE BARU UNTUK MENARIK VIDEO NAIK (VISUAL PEEKING) --- */
+        .hero { padding: 30px 0 10px !important; } /* Pangkas jarak bawah hero */
+        #demo { padding-top: 20px !important; } /* Pangkas jarak atas section demo */
+        #demo .sec-head { margin-bottom: 24px !important; } /* Rapatkan judul dengan video */
+        #video-container { margin-top: 15px !important; } /* Tarik kotak video ke atas */
+        /* ------------------------------------------------------------ */
+
         .pricing-grid { grid-template-columns: 1fr; gap: 36px; }
         .card-dfy { transform: scale(1); }
         .pain, .oc, .incl li { flex-direction: column; align-items: center; text-align: center; }
