@@ -178,12 +178,11 @@
         100% { box-shadow: 0 0 0 0 rgba(95, 208, 160, 0); }
       }
 
-      .hero { padding: 46px 0 60px; }
+      .hero { padding: 40px 0 60px; }
       .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; text-align: center; max-width: 860px; margin: 0 auto; }
-      .hero h1 { font-size: clamp(32px, 5.4vw, 56px); margin: 22px 0 18px; }
+      .hero h1 { font-size: clamp(32px, 5.4vw, 56px); margin: 18px 0 24px; }
       .hero h1 .u { background: linear-gradient(120deg, var(--gold-2), var(--gold)); -webkit-background-clip: text; color: transparent; }
-      .hero .lead { font-size: clamp(16px, 1.4vw, 19px); color: var(--muted); margin: 0 auto 30px; max-width: 700px; }
-      .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+      .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 
       .sec { padding: 80px 0; }
       .sec-head { max-width: 680px; margin: 0 auto 50px; text-align: center; }
@@ -284,12 +283,12 @@
       @media (max-width: 640px) {
         body { text-align: center; }
         
-        /* --- KODE BARU UNTUK MENARIK VIDEO NAIK (VISUAL PEEKING) --- */
-        .hero { padding: 30px 0 10px !important; } /* Pangkas jarak bawah hero */
-        #demo { padding-top: 20px !important; } /* Pangkas jarak atas section demo */
-        #demo .sec-head { margin-bottom: 24px !important; } /* Rapatkan judul dengan video */
-        #video-container { margin-top: 15px !important; } /* Tarik kotak video ke atas */
-        /* ------------------------------------------------------------ */
+        /* --- KODE CSS VISUAL PEEKING --- */
+        .hero { padding: 30px 0 10px !important; } 
+        #demo { padding-top: 20px !important; } 
+        #demo .sec-head { margin-bottom: 24px !important; } 
+        #video-container { margin-top: 15px !important; } 
+        /* -------------------------------- */
 
         .pricing-grid { grid-template-columns: 1fr; gap: 36px; }
         .card-dfy { transform: scale(1); }
@@ -340,35 +339,62 @@
     </header>
 
     <main>
+      <!-- HERO SECTION RADIKAL -->
       <section class="hero">
         <div class="wrap hero-grid">
-          <div style="max-width: 780px; margin: 0 auto;">
-            <!-- Eyebrow disederhanakan, langsung ke intinya -->
+          <div style="max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+            
+            <!-- 1. SOCIAL PROOF INSTAN -->
+            <div class="reveal" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(232, 185, 72, 0.1); padding: 8px 18px; border-radius: 99px; margin-bottom: 24px; border: 1px solid rgba(232, 185, 72, 0.2);">
+              <div style="color: var(--gold-2); font-size: 15px; letter-spacing: 3px;">⭐⭐⭐⭐⭐</div>
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--gold-2);">Sistem pembukuan modern untuk UMKM</div>
+            </div>
+            
             <span class="eyebrow reveal" style="margin-bottom: 24px;"><span class="pulse"></span> ADMIN KEUANGAN VIRTUAL UMKM</span>
             
-            <!-- Headline lebih spesifik, sebut medium (Telegram) dan Hasil (Laporan & Laba Rugi) -->
-            <h1 class="reveal" style="line-height: 1.15; margin-bottom: 20px; font-size: clamp(34px, 5vw, 56px);">
+            <h1 class="reveal" style="line-height: 1.15; margin-bottom: 30px; font-size: clamp(32px, 5vw, 56px);">
               Cukup Ketik di Telegram,<br>Laporan <span class="u">Keuangan & Laba Rugi</span> Otomatis Beres.
             </h1>
-            
-            <!-- Sub-headline dipersingkat agar lebih mudah dipindai (scannable) -->
-            <p class="lead reveal" style="font-size: 17.5px; margin-bottom: 12px; color: var(--muted);">
-              Sistem AI pintar untuk semua bisnis termasuk Kuliner, Retail, dan Jasa. Ubah chat biasa menjadi tabel pembukuan rapi. Otomatis memisahkan Pemasukan, Pengeluaran & Dana Pribadi.
-            </p>
-            <p class="lead reveal" style="font-size: 15px; color: var(--gold-2); font-weight: 600; margin-bottom: 36px;">
-              *Tanpa perlu bayar gaji admin jutaan per bulan.
-            </p>
 
-            <!-- Perbaikan CTA sekunder dengan tanda panah ke bawah -->
-            <div class="hero-cta reveal">
-              <a href="#order" class="btn btn-gold">Ambil Akses Sekarang →</a>
-              <!-- Penambahan panah ↓ untuk memancing scroll ke video -->
-              <a href="#demo" class="btn btn-ghost">🎥 Tonton Cara Kerjanya ↓</a>
+            <!-- 2. ANIMASI "GIF" MENGGUNAKAN VIDEO AUTOPLAY (JAUH LEBIH RINGAN DARI GIF) -->
+            <div class="reveal" style="position: relative; max-width: 480px; width: 100%; border-radius: 16px; overflow: hidden; border: 2px solid var(--gold); box-shadow: 0 20px 40px -10px rgba(232, 185, 72, 0.25); margin-bottom: 36px; background: #000;">
+               <video autoplay loop muted playsinline style="width: 100%; display: block;">
+                 <source src="demo-admin1.mp4" type="video/mp4">
+               </video>
+               <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.75); padding: 6px 12px; border-radius: 8px; font-size: 11.5px; font-weight: 800; color: var(--gold-2); letter-spacing: 0.05em; border: 1px solid rgba(232, 185, 72, 0.3);">
+                 🔴 MENDEMONSTRASIKAN SISTEM
+               </div>
             </div>
+            
+            <!-- 3. CEKLIS PAIN POINT -->
+            <div class="reveal" style="text-align: left; display: inline-block; margin-bottom: 40px; background: rgba(255,255,255,0.03); padding: 24px 28px; border-radius: 18px; border: 1px solid var(--line-soft);">
+              <div style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
+                <span style="flex: none; font-size: 20px; line-height: 1.2;">❌</span>
+                <span style="font-size: 15.5px; color: var(--text); font-weight: 500;">Ucapkan selamat tinggal pada rekap nota manual tiap malam.</span>
+              </div>
+              <div style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px;">
+                <span style="flex: none; font-size: 20px; line-height: 1.2;">✅</span>
+                <span style="font-size: 15.5px; color: var(--text); font-weight: 500;">Ketik transaksi di chat, sistem otomatis memisahkannya ke dalam tabel.</span>
+              </div>
+              <div style="display: flex; gap: 14px; align-items: flex-start;">
+                <span style="flex: none; font-size: 20px; line-height: 1.2;">✅</span>
+                <span style="font-size: 15.5px; color: var(--text); font-weight: 500;">Pantau laba-rugi bisnis secara real-time dari HP.</span>
+              </div>
+            </div>
+
+            <!-- 4. CTA JALAN PINTAS KE SECTION HARGA -->
+            <div class="hero-cta reveal">
+              <a href="#order" class="btn btn-gold" style="padding: 20px 48px; font-size: 18px; width: 100%; max-width: 360px;">Lihat Paket & Harga →</a>
+              <p style="font-size: 14.5px; color: var(--muted); margin-top: 4px;">
+                Atau <a href="#demo" style="color: var(--gold-2); text-decoration: underline; font-weight: 600;">scroll ke bawah</a> untuk menonton demo lengkap.
+              </p>
+            </div>
+            
           </div>
         </div>
       </section>
 
+      <!-- SECTION DEMO KLIK UNTUK MEMUTAR -->
       <section class="sec" style="background: rgba(245, 243, 238, 0.02);" id="demo">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -421,7 +447,7 @@
             </div>
             
             <div id="click-hint" style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 12px; margin-bottom: 4px; font-weight: 600; letter-spacing: 0.05em;">
-              👆 KLIK UNTUK MEMUTAR VIDEO DEMO
+              👆 KLIK UNTUK MEMUTAR VIDEO DEMO LENGKAP
             </div>
           </div>
         </div>
@@ -507,8 +533,6 @@
               <h3>Operasional Nyaris Gratis</h3>
               <p>Bebas pusing tagihan bulanan. Anda mendapat gratis server 1 tahun penuh, ditambah kuota token chat melimpah untuk transaksi harian UMKM.</p>
             </div>
-
-          </div>
 
           </div>
         </div>
@@ -620,7 +644,6 @@
         </div>
       </section>
       
-      <!-- PERBAIKAN LIST HARGA (MENGGUNAKAN SPAN) -->
       <section class="sec" id="order">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -646,7 +669,8 @@
                 <li class="x"><span class="c">✕</span> <span>Anda harus merakit sistem sendiri dari nol</span></li>
                 <li class="x"><span class="c">✕</span> <span>Bantuan teknis via group discussion (reguler)</span></li>
               </ul>
-              <a href="https://budihakim.myscalev.com/checkout-paket-mandiri" class="btn btn-ghost btn-block" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Paket Mandiri'});">Ambil Paket Mandiri</a>
+              <!-- Tracking event parameter InitiateCheckout TERBARU, link checkout telah disesuaikan -->
+              <a href="https://hakimlabs.myscalev.com/checkout-paket-mandiri" class="btn btn-ghost btn-block" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Paket Mandiri'});">Ambil Paket Mandiri</a>
             </div>
 
             <div class="card-dfy reveal">
@@ -665,7 +689,8 @@
                 <li><span class="c">✓</span> <span>Prioritas Support (Bantuan langsung via WA jika ada kendala)</span></li>
                 <li><span class="c">✓</span> <span><b>Tahun ke-2 Sangat Murah</b> (Perpanjangan server cuma ~Rp 199rb/Tahun)</span></li>
               </ul>
-              <a href="https://budihakim.myscalev.com/checkout-paket-terima-beres" class="btn btn-gold btn-block" style="margin-bottom: 12px;" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Paket Terima Beres'});">Ambil Paket Terima Beres →</a>
+              <!-- Tracking event parameter InitiateCheckout TERBARU, link checkout telah disesuaikan -->
+              <a href="https://hakimlabs.myscalev.com/checkout-paket-terima-beres" class="btn btn-gold btn-block" style="margin-bottom: 12px;" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Paket Terima Beres'});">Ambil Paket Terima Beres →</a>
               <div style="text-align: center; font-size: 12.5px; color: var(--gold-2); font-weight: 700;">
                 ⏳ Sisa 7 Slot Promo Bulan Ini
               </div>
@@ -691,7 +716,6 @@
         </div>
       </section>
 
-      <!-- PERBAIKAN SECTION FAQ -->
       <section class="sec">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -806,7 +830,7 @@
                 video.pause(); // Hentikan video
               }
             });
-          }, { threshold: 0.05 }); // Terpicu saat kurang dari 5% bagian video terlihat
+          }, { threshold: 0.05 }); 
           
           pauseObserver.observe(videoContainer);
         }
