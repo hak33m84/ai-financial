@@ -120,7 +120,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 0;
+        padding: 16px 0; /* Dipangkas agar lebih rapat */
       }
       .brand {
         display: flex;
@@ -161,28 +161,61 @@
       }
       .btn-block { width: 100%; }
 
-      .eyebrow {
-        display: inline-flex; align-items: center; gap: 9px;
-        font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em;
-        text-transform: uppercase; color: var(--gold-2);
-        border: 1px solid var(--line); border-radius: 999px;
-        padding: 7px 15px; background: rgba(232, 185, 72, 0.05);
+      /* --- CSS HERO SECTION ZOTOV STYLE --- */
+      .hero { padding: 10px 0 60px; } /* Jarak atas dipangkas drastis */
+      .hero-grid { 
+        display: grid; 
+        grid-template-columns: 1.05fr 0.95fr; 
+        gap: 30px; 
+        align-items: center; 
+        max-width: 1000px; 
+        margin: 0 auto; 
       }
-      .eyebrow .pulse {
-        width: 7px; height: 7px; border-radius: 50%; background: var(--green);
-        box-shadow: 0 0 0 0 rgba(95, 208, 160, 0.6); animation: pulse 2s infinite;
+      .hero-left { text-align: left; }
+      .hero-right { position: relative; }
+      
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
       }
-      @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(95, 208, 160, 0.5); }
-        70% { box-shadow: 0 0 0 8px rgba(95, 208, 160, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(95, 208, 160, 0); }
+      .hero-badge .stars {
+        color: var(--gold-2);
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+      .hero-badge .text {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--gold-2);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-left: 2px solid rgba(232, 185, 72, 0.3);
+        padding-left: 10px;
       }
 
-      .hero { padding: 40px 0 60px; }
-      .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; text-align: center; max-width: 860px; margin: 0 auto; }
-      .hero h1 { font-size: clamp(30px, 4.5vw, 48px); margin: 0 0 24px; }
+      .hero h1 { font-size: clamp(32px, 4vw, 48px); margin: 0 0 24px; line-height: 1.15; }
       .hero h1 .u { background: linear-gradient(120deg, var(--gold-2), var(--gold)); -webkit-background-clip: text; color: transparent; }
-      .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+      
+      .hero-list { list-style: none; margin: 0 0 24px 0; display: grid; gap: 14px; }
+      .hero-list li { display: flex; gap: 12px; font-size: 15px; color: var(--text); align-items: flex-start; line-height: 1.4; font-weight: 500;}
+      .hero-list li .icon-x { color: #ff5f57; font-weight: bold; flex: none; }
+      .hero-list li .icon-v { color: var(--green); font-weight: bold; flex: none; }
+
+      .zotov-box {
+        background: linear-gradient(145deg, var(--surface-2), var(--surface)); 
+        border: 1px solid rgba(232, 185, 72, 0.3); 
+        border-radius: 16px; 
+        padding: 22px; 
+        text-align: left; 
+        width: 88%; 
+        margin: -40px auto 0; /* Tumpang tindih dengan video */
+        position: relative; 
+        z-index: 2; 
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7);
+      }
+      /* ------------------------------------ */
 
       .sec { padding: 80px 0; }
       .sec-head { max-width: 680px; margin: 0 auto 50px; text-align: center; }
@@ -278,17 +311,21 @@
 
       @media (max-width: 900px) {
         .pains, .outcomes { grid-template-columns: 1fr; }
+        
+        /* Mobile Hero adjustments */
+        .hero-grid { grid-template-columns: 1fr; gap: 10px; }
+        .hero-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .hero-list { text-align: left; }
+        .zotov-box { width: 95%; margin-top: -20px; padding: 18px; }
       }
 
       @media (max-width: 640px) {
         body { text-align: center; }
+        .hero { padding: 0 0 20px 0 !important; } 
         
-        /* --- KODE CSS VISUAL PEEKING --- */
-        .hero { padding: 30px 0 10px !important; } 
         #demo { padding-top: 20px !important; } 
         #demo .sec-head { margin-bottom: 24px !important; } 
         #video-container { margin-top: 15px !important; } 
-        /* -------------------------------- */
 
         .pricing-grid { grid-template-columns: 1fr; gap: 36px; }
         .card-dfy { transform: scale(1); }
@@ -327,7 +364,7 @@
   </head>
 
   <body>
-    <!-- TOPBAR TERBARU -->
+    <!-- TOPBAR -->
     <div class="topbar">
       ⚡ PROMO SPESIAL BULAN INI &nbsp;•&nbsp; Bebas Biaya Bulanan & Gratis Server 1 Tahun untuk Paket Terima Beres
     </div>
@@ -339,50 +376,57 @@
     </header>
 
     <main>
-      <!-- HERO SECTION RADIKAL -->
+      <!-- HERO SECTION ZOTOV STYLE -->
       <section class="hero">
         <div class="wrap hero-grid">
-          <div style="max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-            
-            <!-- 1. SOCIAL PROOF INSTAN -->
-            <div class="reveal" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(232, 185, 72, 0.1); padding: 8px 18px; border-radius: 99px; margin-bottom: 16px; border: 1px solid rgba(232, 185, 72, 0.2);">
-              <div style="color: var(--gold-2); font-size: 15px; letter-spacing: 3px;">⭐⭐⭐⭐⭐</div>
-              <div style="font-size: 13.5px; font-weight: 700; color: var(--gold-2);">Sistem pembukuan modern untuk UMKM</div>
+          
+          <!-- KIRI: HEADLINE & PENAWARAN UTAMA -->
+          <div class="hero-left">
+            <div class="hero-badge reveal">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+              <div class="text">Asisten Keuangan UMKM</div>
             </div>
             
-            <span class="eyebrow reveal" style="margin-bottom: 24px;"><span class="pulse"></span> ADMIN KEUANGAN VIRTUAL UMKM</span>
+            <h1 class="reveal">
+              Lupakan Rekap Manual.<br><span class="u">Laba-Rugi Beres</span> Hanya Lewat Chat.
+            </h1>
             
-            <!-- 2. ANIMASI "GIF" MENGGUNAKAN VIDEO AUTOPLAY DITARIK KE ATAS -->
-            <div class="reveal" style="position: relative; max-width: 480px; width: 100%; border-radius: 16px; overflow: hidden; border: 2px solid var(--gold); box-shadow: 0 20px 40px -10px rgba(232, 185, 72, 0.25); margin-bottom: 30px; background: #000;">
-               <video autoplay loop muted playsinline style="width: 100%; display: block;">
+            <ul class="hero-list reveal">
+              <li><span class="icon-x">✕</span> <span>Selamat tinggal rekap nota tengah malam.</span></li>
+              <li><span class="icon-v">✓</span> <span>Ketik di Telegram, tabel terisi otomatis.</span></li>
+              <li><span class="icon-v">✓</span> <span>Pantau omzet & profit real-time dari HP.</span></li>
+            </ul>
+          </div>
+
+          <!-- KANAN: VISUAL & BOKS CTA TUMPANG TINDIH -->
+          <div class="hero-right reveal">
+            <!-- Video Container -->
+            <div style="width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid rgba(232, 185, 72, 0.2); box-shadow: 0 10px 30px -5px rgba(0,0,0,0.8); background: #000; position: relative;">
+               <video autoplay loop muted playsinline style="width: 100%; display: block; opacity: 0.95;">
                  <source src="demo-admin1.mp4" type="video/mp4">
                </video>
-               <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.75); padding: 6px 12px; border-radius: 8px; font-size: 11.5px; font-weight: 800; color: var(--gold-2); letter-spacing: 0.05em; border: 1px solid rgba(232, 185, 72, 0.3);">
-                 🔴 DEMO SISTEM
+               <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.8); padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; color: var(--gold-2); border: 1px solid rgba(232, 185, 72, 0.4); letter-spacing: 0.05em;">
+                 🔴 LIVE DEMO
                </div>
             </div>
-
-            <!-- 3. HEADLINE FOKUS PADA VISUAL DI ATASNYA -->
-            <h1 class="reveal" style="line-height: 1.15; margin-bottom: 20px; font-size: clamp(30px, 4.5vw, 48px);">
-              Lupakan Rekap Manual yang Bikin Pusing. Lihat Bagaimana <span class="u">Laporan Laba-Rugi</span> Anda Selesai Hanya Lewat Chat!
-            </h1>
-
-            <!-- 4. SUB-HEADLINE + PANAH -->
-            <p class="lead reveal" style="font-size: 17.5px; margin-bottom: 36px; color: var(--muted); max-width: 680px;">
-              Anda cukup ketik pengeluaran di Telegram, dan biarkan AI kami yang otomatis menyusun tabel rapi seperti di atas. Gulir ke bawah untuk melihat cara kerja lengkapnya 👇
-            </p>
-
-            <!-- 5. CTA TUNGGAL KE SECTION HARGA -->
-            <div class="hero-cta reveal">
-              <a href="#order" class="btn btn-gold" style="padding: 20px 48px; font-size: 18px; width: 100%; max-width: 360px;">Lihat Detail Paket →</a>
-            </div>
             
+            <!-- Zotov Overlay Box -->
+            <div class="zotov-box">
+               <p style="font-size: 13.5px; color: var(--muted); margin-bottom: 16px; line-height: 1.5;">
+                 Tinggalkan Excel ribet. AI cerdas kami mengubah chat biasa Anda menjadi laporan keuangan lengkap secara <i>real-time</i>.
+               </p>
+               <a href="#order" class="btn btn-gold btn-block" style="padding: 14px 20px; font-size: 15px;">Lihat Detail Paket →</a>
+               <div style="text-align: center; font-size: 11.5px; color: var(--muted-2); margin-top: 12px; font-weight: 500;">
+                  👇 Atau scroll untuk penjelasan lengkap
+               </div>
+            </div>
           </div>
+          
         </div>
       </section>
 
       <!-- SECTION DEMO KLIK UNTUK MEMUTAR -->
-      <section class="sec" style="background: rgba(245, 243, 238, 0.02);" id="demo">
+      <section class="sec" style="background: rgba(245, 243, 238, 0.02); border-top: 1px solid var(--line-soft);" id="demo">
         <div class="wrap">
           <div class="sec-head reveal">
             <span class="eyebrow">Tinggal Chat, Tabel Terisi Sendiri</span>
@@ -779,7 +823,6 @@
         let isVideoLoaded = false;
         
         if (video && poster && videoContainer) {
-          // 1. Fungsi Klik untuk Memutar Video
           videoContainer.addEventListener("click", () => {
             if (!isVideoLoaded) {
               const source = video.querySelector("source");
@@ -787,18 +830,13 @@
               video.load();
               isVideoLoaded = true;
             }
-            
-            // Putar video jika sedang pause
             if (video.paused) {
               const playPromise = video.play();
-              
               if (playPromise !== undefined) {
                 playPromise.then(_ => {
-                  // Sembunyikan elemen poster & tombol awal
                   poster.style.display = "none";
                   if (playBtn) playBtn.style.display = "none";
                   if (clickHint) clickHint.style.display = "none";
-                  
                   video.style.display = "block";
                 }).catch(error => {
                   console.log("Pemutaran video tertahan:", error);
@@ -807,12 +845,10 @@
             }
           });
 
-          // 2. Fungsi Auto-Pause saat Scroll Keluar Layar
           const pauseObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-              // Jika video sudah loading, sedang tidak dipause, dan KELUAR dari layar
               if (!entry.isIntersecting && isVideoLoaded && !video.paused) {
-                video.pause(); // Hentikan video
+                video.pause(); 
               }
             });
           }, { threshold: 0.05 }); 
