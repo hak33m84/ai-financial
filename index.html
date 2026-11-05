@@ -609,7 +609,8 @@
               box-shadow: 0 40px 120px -20px rgba(232, 185, 72, 0.35);
               position: relative;
             ">
-              <img src="cover1.webp" alt="Dashboard Admin Virtual UMKM" width="1200" height="896" loading="lazy" style="width: 100%; height: auto; border-radius: 18px; display: block;">
+              <!-- PERBAIKAN: Menambahkan aspect-ratio: 16/8.5 dan object-fit: cover untuk memotong jarak kosong atas-bawah secara otomatis -->
+              <img src="cover1.webp" alt="Dashboard Admin Virtual UMKM" loading="lazy" style="width: 100%; aspect-ratio: 16/8.5; object-fit: cover; object-position: center; border-radius: 18px; display: block;">
             </div>
             
             <div style="
@@ -617,7 +618,7 @@
               border: 1px solid rgba(232, 185, 72, 0.2);
               border-radius: 12px;
               padding: 16px 24px;
-              margin-top: 16px;
+              margin-top: 32px;
               display: inline-block;
             ">
               <p style="font-size: 14.5px; color: var(--gold-2); margin: 0; font-weight: 500; max-width: 680px; text-align: center;">
