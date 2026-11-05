@@ -219,13 +219,60 @@
       /* --- GENERAL SECTION CSS --- */
       .sec { padding: 80px 0; }
       
-      /* --- KELAS KHUSUS ZEBRA STRIPING --- */
+      /* --- KELAS KHUSUS ZEBRA STRIPING KONTRAST TINGGI --- */
       .sec-zebra {
-        background-color: #15120e; /* Warna abu kecoklatan yang terlihat jelas perbedaannya dari hitam */
-        border-top: 1px solid var(--line-soft);
-        border-bottom: 1px solid var(--line-soft);
+        background-color: #FFFBEA; /* Warna kuning muda pucat ala Awas Tukang */
+        color: #1A1305; /* Teks Hitam Kecoklatan */
+        border-top: 1px solid #E8D596;
+        border-bottom: 1px solid #E8D596;
       }
+      .sec-zebra h2, .sec-zebra h3, .sec-zebra b { color: #1A1305; }
+      .sec-zebra .sec-head p, .sec-zebra .pain p, .sec-zebra .oc p, .sec-zebra details .ans {
+        color: #594A31; /* Teks subjudul / paragraf agak diredupkan */
+      }
+      .sec-zebra .eyebrow {
+        background: rgba(232, 185, 72, 0.2);
+        border-color: rgba(232, 185, 72, 0.5);
+        color: #9C6C04;
+      }
+      .sec-zebra .pain-foot { color: #1A1305; }
+      .sec-zebra .pain-foot .gold { color: #9C6C04; font-weight: 800; }
       
+      /* Cards dalam Zebra */
+      .sec-zebra .pain, .sec-zebra .oc, .sec-zebra details {
+        background: #FFFFFF;
+        border: 1px solid #E8D596;
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.06);
+      }
+      .sec-zebra .faq summary { color: #1A1305; }
+      .sec-zebra .faq summary .pm { border-color: #E8D596; color: #9C6C04; }
+
+      /* Authority Section dalam Zebra */
+      .authority-box {
+        max-width: 900px; margin: 0 auto; 
+        background: linear-gradient(160deg, var(--surface-2), var(--surface)); 
+        border: 1px solid var(--gold); border-radius: 24px; padding: 40px; 
+        display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+      }
+      .authority-item {
+        background: rgba(255,255,255,0.03); border: 1px solid var(--line); 
+        padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: center;
+      }
+      .auth-title { font-size: 20px; margin-bottom: 12px; color: var(--gold-2); }
+      .auth-desc { font-size: 15px; margin-bottom: 16px; color: var(--muted); }
+      .auth-feat-title { font-size: 16px; margin-bottom: 4px; }
+      .auth-feat-desc { font-size: 13px; margin: 0; color: var(--muted); }
+      
+      .sec-zebra .authority-box {
+        background: #FFFFFF; border-color: #E8D596; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+      }
+      .sec-zebra .authority-item { background: #FFFBEA; border-color: #E8D596; }
+      .sec-zebra .auth-title { color: #9C6C04; }
+      .sec-zebra .auth-feat-title { color: #1A1305; }
+      .sec-zebra .auth-desc, .sec-zebra .auth-feat-desc { color: #594A31; }
+      /* ---------------------------------------------------- */
+
       .sec-head { max-width: 680px; margin: 0 auto 50px; text-align: center; }
       .sec-head h2 { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 16px; margin-top:15px; }
       .sec-head p { color: var(--muted); font-size: 17px; }
@@ -237,41 +284,9 @@
       .pain p { color: var(--muted); font-size: 14.5px; }
 
       .playground-wrap {
-        background-color: #0f0d0b;
-        border: 1px solid var(--line); 
-        border-radius: 24px;
-        box-shadow: var(--shadow);
-        margin-top: 40px;
-        padding: 0; 
-        overflow: hidden; 
-        position: relative;
-        cursor: pointer;
-      }
-      .play-btn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 72px;
-        height: 72px;
-        background: rgba(0, 0, 0, 0.7);
-        border: 2px solid var(--gold-2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 2;
-        transition: transform 0.2s, background 0.2s;
-      }
-      .playground-wrap:hover .play-btn {
-        transform: translate(-50%, -50%) scale(1.1);
-        background: rgba(232, 185, 72, 0.2);
-      }
-      .play-btn svg {
-        width: 32px;
-        height: 32px;
-        fill: var(--gold-2);
-        margin-left: 6px; 
+        background-color: #0f0d0b; border: 1px solid var(--line); border-radius: 24px;
+        box-shadow: var(--shadow); margin-top: 40px; padding: 0; position: relative;
+        max-width: 800px; margin-left: auto; margin-right: auto;
       }
 
       .outcomes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto;}
@@ -281,15 +296,7 @@
       .oc p { color: var(--muted); font-size: 14.5px; }
 
       .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; margin: 0 auto; align-items: stretch;}
-      .card-diy { 
-        background: linear-gradient(160deg, var(--surface), var(--bg-2)); 
-        border: 1px solid #333333; 
-        border-radius: 24px; 
-        padding: 36px 30px; 
-        opacity: 0.95; 
-        display: flex; 
-        flex-direction: column;
-      }
+      .card-diy { background: linear-gradient(160deg, var(--surface), var(--bg-2)); border: 1px solid #333333; border-radius: 24px; padding: 36px 30px; opacity: 0.95; display: flex; flex-direction: column; }
       .card-dfy { background: linear-gradient(160deg, var(--surface-2), var(--surface)); border: 2px solid var(--gold); border-radius: 24px; padding: 36px 30px; box-shadow: 0 30px 60px -20px rgba(232, 185, 72, 0.25); position: relative; transform: scale(1.03); z-index: 2; display: flex; flex-direction: column;}
       .card-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(150deg, var(--gold-2), var(--gold-deep)); color: #111; padding: 6px 20px; border-radius: 20px; font-weight: 800; font-size: 13px; letter-spacing: 0.05em; white-space: nowrap; box-shadow: 0 10px 20px -5px rgba(232, 185, 72, 0.5);}
       
@@ -319,21 +326,20 @@
 
       @media (max-width: 900px) {
         .pains, .outcomes { grid-template-columns: 1fr; }
-        
         .hero-grid { grid-template-columns: 1fr; gap: 10px; }
         .hero-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .hero-list { text-align: left; }
         .zotov-box { width: 95%; margin-top: -20px; padding: 18px; }
+        .authority-box { grid-template-columns: 1fr; text-align: center; }
+        .authority-item { text-align: left; }
       }
 
       @media (max-width: 640px) {
         body { text-align: center; }
         .hero { padding: 0 0 20px 0 !important; } 
-        
         #demo { padding-top: 20px !important; } 
         #demo .sec-head { margin-bottom: 24px !important; } 
-        #video-container { margin-top: 15px !important; } 
-
+        
         .pricing-grid { grid-template-columns: 1fr; gap: 36px; }
         .card-dfy { transform: scale(1); }
         .pain, .oc, .incl li { flex-direction: column; align-items: center; text-align: center; }
@@ -383,11 +389,10 @@
     </header>
 
     <main>
-      <!-- SECTION 1: HERO (Latar Gelap Normal) -->
+      <!-- SECTION 1: HERO (Hitam) -->
       <section class="hero">
         <div class="wrap hero-grid">
           
-          <!-- KIRI: HEADLINE & PENAWARAN UTAMA -->
           <div class="hero-left">
             <div class="hero-badge reveal">
               <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -405,9 +410,7 @@
             </ul>
           </div>
 
-          <!-- KANAN: VISUAL & BOKS CTA TUMPANG TINDIH -->
           <div class="hero-right reveal">
-            <!-- Video Container -->
             <div style="width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid rgba(232, 185, 72, 0.2); box-shadow: 0 10px 30px -5px rgba(0,0,0,0.8); background: #000; position: relative;">
                <video autoplay loop muted playsinline style="width: 100%; display: block; opacity: 0.95;">
                  <source src="demo-admin1.mp4" type="video/mp4">
@@ -417,7 +420,6 @@
                </div>
             </div>
             
-            <!-- Zotov Overlay Box -->
             <div class="zotov-box">
                <p style="font-size: 13.5px; color: var(--muted); margin-bottom: 16px; line-height: 1.5;">
                  Tinggalkan Excel ribet. AI cerdas kami mengubah chat biasa Anda menjadi laporan keuangan lengkap secara <i>real-time</i>.
@@ -432,7 +434,7 @@
         </div>
       </section>
 
-      <!-- SECTION 2: FAKTA PAHIT (Zebra Striping Terlihat Jelas) -->
+      <!-- SECTION 2: FAKTA PAHIT (Zebra Kuning Muda - Kontras Tinggi) -->
       <section class="sec sec-zebra">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -482,7 +484,7 @@
         </div>
       </section>
 
-      <!-- SECTION 3: DEMO VIDEO SOLUSI (Latar Gelap Normal) -->
+      <!-- SECTION 3: DEMO VIDEO SOLUSI (Hitam) -->
       <section class="sec" id="demo">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -491,58 +493,33 @@
             <p>Sistem ini dirancang khusus untuk Anda yang sibuk. Tonton video singkat ini untuk melihat bagaimana chat biasa otomatis menjadi laporan rapi.</p>
           </div>
           
-          <div class="playground-wrap reveal" id="video-container" style="
-            background-color: #1a1a1a;
-            border: 1px solid rgba(232, 185, 72, 0.3); 
-            border-radius: 20px;
-            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 40px -10px rgba(232, 185, 72, 0.1);
-            margin-top: 40px;
-            padding: 8px; 
-            overflow: hidden; 
-            position: relative;
-            cursor: pointer;
-            max-width: 800px; 
-            margin-left: auto;
-            margin-right: auto;
-          ">
-            
-            <div style="position: relative; border-radius: 14px; overflow: hidden; background: #000;">
-              <img id="vid-poster" src="poster-demo1.webp" alt="Demo Admin Virtual" width="800" height="450" fetchpriority="high" style="width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block; opacity: 0.85; transition: opacity 0.3s;">
+          <div id="video-container" class="playground-wrap reveal">
+            <!-- STRUKTUR VIDEO BARU: ANTI MACET, MENGGUNAKAN LAPISAN Z-INDEX -->
+            <div style="position: relative; border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16/9;">
               
-              <div class="play-btn" id="play-btn" style="
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 80px;
-                height: 80px;
-                background: rgba(232, 185, 72, 0.9);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 2;
-                box-shadow: 0 10px 30px rgba(232, 185, 72, 0.4);
-                transition: transform 0.2s;
-              ">
-                <svg viewBox="0 0 24 24" style="width: 36px; height: 36px; fill: #111; margin-left: 6px;"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-              
-              <!-- PERBAIKAN FATAL: MENGHAPUS DATA-SRC, MENGGUNAKAN SRC LANGSUNG AGAR BISA DIPLAY -->
-              <video id="demoVideo" loop playsinline controls preload="metadata" style="width: 100%; height: auto; display: none; border-radius: 14px;">
+              <!-- Video berada di lapisan paling dasar (z-index 1). Ini memastikan browser sudah merender elemennya -->
+              <video id="demoVideo" loop playsinline controls preload="metadata" style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 1;">
                 <source src="demo-produk1.mp4" type="video/mp4">
                 Maaf, browser Anda tidak mendukung pemutaran video.
               </video>
+              
+              <!-- Overlay/Poster ini menutupi video. Saat diklik, ini akan disembunyikan lewat Javascript -->
+              <div id="video-overlay" style="position: absolute; inset: 0; z-index: 2; background: #000; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <img id="vid-poster" src="poster-demo1.webp" alt="Demo Admin Virtual" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85;">
+                <div class="play-btn" style="position: relative; z-index: 3;">
+                  <svg viewBox="0 0 24 24" style="width: 36px; height: 36px; fill: var(--gold-2); margin-left: 6px;"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
             </div>
             
-            <div id="click-hint" style="text-align: center; font-size: 13px; color: var(--muted); margin-top: 12px; margin-bottom: 4px; font-weight: 600; letter-spacing: 0.05em;">
+            <div id="click-hint" style="text-align: center; font-size: 13px; color: var(--muted); padding: 12px 0 4px; font-weight: 600; letter-spacing: 0.05em; background: #1a1a1a;">
               👆 KLIK UNTUK MEMUTAR VIDEO DEMO LENGKAP
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 4: FITUR PINTAR (Zebra Striping) -->
+      <!-- SECTION 4: FITUR PINTAR (Zebra Kuning Muda) -->
       <section class="sec sec-zebra">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -579,7 +556,7 @@
         </div>
       </section>
 
-      <!-- SECTION 5: DASHBOARD HASIL AKHIR (Latar Gelap Normal) -->
+      <!-- SECTION 5: DASHBOARD HASIL AKHIR (Hitam) -->
       <section class="sec" style="padding-bottom: 50px;">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -618,7 +595,7 @@
         </div>
       </section>
 
-      <!-- SECTION 6: SOCIAL PROOF / AUTHORITY (Zebra Striping) -->
+      <!-- SECTION 6: SOCIAL PROOF / AUTHORITY (Zebra Kuning Muda) -->
       <section class="sec sec-zebra">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -626,68 +603,43 @@
             <h2>Teruji di Lingkungan Kritis Bandara.<br>Kini Hadir untuk Bisnis Anda.</h2>
           </div>
           
-          <div class="reveal" style="
-            max-width: 900px; 
-            margin: 0 auto; 
-            background: linear-gradient(160deg, var(--surface-2), var(--surface)); 
-            border: 1px solid var(--gold); 
-            border-radius: 24px; 
-            padding: 40px; 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 40px; 
-            align-items: center;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
-          ">
+          <div class="reveal authority-box">
             
             <div>
               <div style="font-size: 32px; margin-bottom: 16px;">✈️</div>
-              <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--gold-2);">Teknologi Enterprise, Harga UMKM</h3>
-              <p style="color: var(--muted); font-size: 15px; margin-bottom: 16px;">
+              <h3 class="auth-title">Teknologi Enterprise, Harga UMKM</h3>
+              <p class="auth-desc">
                 Sejujurnya, mesin di balik Admin Virtual ini awalnya kami rancang secara khusus untuk menangani <b>Sistem Laporan Maintenance di salah satu Bandara</b>. Sebuah lingkungan di mana data tidak boleh hilang, tidak boleh <i>error</i>, dan harus bekerja cepat 24 jam nonstop.
               </p>
-              <p style="color: var(--muted); font-size: 15px;">
+              <p class="auth-desc">
                 Melihat betapa tangguhnya sistem otomatisasi <i>chat-to-database</i> ini, kami memutuskan untuk menyederhanakan tampilannya agar bisa digunakan oleh pengusaha seperti Anda untuk menyelamatkan laporan keuangan mereka.
               </p>
             </div>
             
             <div style="display: flex; flex-direction: column; gap: 20px;">
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: center;">
+              <div class="authority-item">
                 <div style="font-size: 24px;">🔒</div>
                 <div>
-                  <h4 style="font-size: 16px; margin-bottom: 4px;">Akurasi Tingkat Tinggi</h4>
-                  <p style="font-size: 13px; color: var(--muted); margin: 0;">Sistem yang sama digunakan untuk log pemeliharaan bandara.</p>
+                  <h4 class="auth-feat-title">Akurasi Tingkat Tinggi</h4>
+                  <p class="auth-feat-desc">Sistem yang sama digunakan untuk log pemeliharaan bandara.</p>
                 </div>
               </div>
               
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--line); padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: center;">
+              <div class="authority-item">
                 <div style="font-size: 24px;">⚡</div>
                 <div>
-                  <h4 style="font-size: 16px; margin-bottom: 4px;">Server Anti-Down</h4>
-                  <p style="font-size: 13px; color: var(--muted); margin: 0;">Infrastruktur cloud yang stabil menangani ribuan chat tanpa antre.</p>
+                  <h4 class="auth-feat-title">Server Anti-Down</h4>
+                  <p class="auth-feat-desc">Infrastruktur cloud yang stabil menangani ribuan chat tanpa antre.</p>
                 </div>
               </div>
             </div>
 
           </div>
           
-          <style>
-            @media (max-width: 768px) {
-              .sec-zebra > .wrap > div:nth-child(2) {
-                grid-template-columns: 1fr !important;
-                padding: 24px !important;
-                text-align: center;
-              }
-              .sec-zebra > .wrap > div:nth-child(2) > div:nth-child(2) > div {
-                text-align: left;
-              }
-            }
-          </style>
-
         </div>
       </section>
       
-      <!-- SECTION 7: HARGA / PRICING (Latar Gelap Normal) -->
+      <!-- SECTION 7: HARGA / PRICING (Hitam) -->
       <section class="sec" id="order">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -758,7 +710,7 @@
         </div>
       </section>
 
-      <!-- SECTION 8: FAQ (Zebra Striping) -->
+      <!-- SECTION 8: FAQ (Zebra Kuning Muda) -->
       <section class="sec sec-zebra">
         <div class="wrap">
           <div class="sec-head reveal">
@@ -808,9 +760,7 @@
     </footer>
 
     <script>
-      // ==========================================
-      // 1. SCRIPT ANIMASI SCROLL (BAWAAN)
-      // ==========================================
+      // 1. SCRIPT ANIMASI SCROLL
       const io = new IntersectionObserver((es) => {
         es.forEach((e) => {
           if (e.isIntersecting) {
@@ -825,39 +775,28 @@
         io.observe(el);
       });
 
-      // ==========================================
-      // 2. SCRIPT VIDEO TERBARU (ANTI MACET)
-      // ==========================================
+      // 2. SCRIPT VIDEO TERBARU: MUTLAK ANTI MACET
       document.addEventListener("DOMContentLoaded", function() {
-        const videoContainer = document.getElementById("video-container");
+        const overlay = document.getElementById("video-overlay");
         const video = document.getElementById("demoVideo");
-        const poster = document.getElementById("vid-poster");
-        const playBtn = document.getElementById("play-btn");
         const clickHint = document.getElementById("click-hint");
         
-        if (video && poster && videoContainer) {
-          videoContainer.addEventListener("click", () => {
-            // Karena source-nya sudah langsung di HTML, kita bisa langsung perintahkan play
-            if (video.paused) {
-              const playPromise = video.play();
-              if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                  poster.style.display = "none";
-                  if (playBtn) playBtn.style.display = "none";
-                  if (clickHint) clickHint.style.display = "none";
-                  video.style.display = "block";
-                }).catch(error => {
-                  console.log("Autoplay dicegah browser, videonya akan ditampikan agar user bisa menekan tombol play bawaan:", error);
-                  poster.style.display = "none";
-                  if (playBtn) playBtn.style.display = "none";
-                  if (clickHint) clickHint.style.display = "none";
-                  video.style.display = "block";
-                });
-              }
+        if (overlay && video) {
+          overlay.addEventListener("click", () => {
+            // Sembunyikan cover secara instan
+            overlay.style.display = "none";
+            if (clickHint) clickHint.style.display = "none";
+            
+            // Perintahkan video play
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(error => {
+                console.log("Autoplay dicegat sistem HP, namun video control sudah terbuka agar bisa diplay manual:", error);
+              });
             }
           });
 
-          // Auto-pause kalau disekrol agar suara tidak bocor
+          // Auto-pause kalau disekrol keluar layar
           const pauseObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (!entry.isIntersecting && !video.paused) {
@@ -866,7 +805,7 @@
             });
           }, { threshold: 0.05 }); 
           
-          pauseObserver.observe(videoContainer);
+          pauseObserver.observe(video);
         }
       });
     </script>
