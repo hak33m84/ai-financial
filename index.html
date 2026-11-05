@@ -161,7 +161,7 @@
       }
       .btn-block { width: 100%; }
 
-      /* --- CSS HERO SECTION ZOTOV STYLE --- */
+      /* --- CSS HERO SECTION --- */
       .hero { padding: 10px 0 60px; }
       .hero-grid { 
         display: grid; 
@@ -215,9 +215,17 @@
         z-index: 2; 
         box-shadow: 0 20px 40px -10px rgba(0,0,0,0.7);
       }
-      /* ------------------------------------ */
 
+      /* --- GENERAL SECTION CSS --- */
       .sec { padding: 80px 0; }
+      
+      /* --- KELAS KHUSUS ZEBRA STRIPING --- */
+      .sec-zebra {
+        background-color: #15120e; /* Warna abu kecoklatan yang terlihat jelas perbedaannya dari hitam */
+        border-top: 1px solid var(--line-soft);
+        border-bottom: 1px solid var(--line-soft);
+      }
+      
       .sec-head { max-width: 680px; margin: 0 auto 50px; text-align: center; }
       .sec-head h2 { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 16px; margin-top:15px; }
       .sec-head p { color: var(--muted); font-size: 17px; }
@@ -312,7 +320,6 @@
       @media (max-width: 900px) {
         .pains, .outcomes { grid-template-columns: 1fr; }
         
-        /* Mobile Hero adjustments */
         .hero-grid { grid-template-columns: 1fr; gap: 10px; }
         .hero-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .hero-list { text-align: left; }
@@ -425,8 +432,8 @@
         </div>
       </section>
 
-      <!-- SECTION 2: FAKTA PAHIT (Zebra Striping: Latar Terang Dikit) -->
-      <section class="sec" style="background: rgba(245, 243, 238, 0.02); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);">
+      <!-- SECTION 2: FAKTA PAHIT (Zebra Striping Terlihat Jelas) -->
+      <section class="sec sec-zebra">
         <div class="wrap">
           <div class="sec-head reveal">
             <span class="eyebrow">FAKTA PAHIT PEMBUKUAN MANUAL</span>
@@ -521,8 +528,8 @@
                 <svg viewBox="0 0 24 24" style="width: 36px; height: 36px; fill: #111; margin-left: 6px;"><path d="M8 5v14l11-7z"/></svg>
               </div>
               
-              <!-- PERBAIKAN: SOURCE VIDEO LANGSUNG DITANAM, TANPA PRELOAD BLOCKER AGAR PASTI JALAN -->
-              <video id="demoVideo" loop playsinline controls style="width: 100%; height: auto; display: none; border-radius: 14px;">
+              <!-- PERBAIKAN FATAL: MENGHAPUS DATA-SRC, MENGGUNAKAN SRC LANGSUNG AGAR BISA DIPLAY -->
+              <video id="demoVideo" loop playsinline controls preload="metadata" style="width: 100%; height: auto; display: none; border-radius: 14px;">
                 <source src="demo-produk1.mp4" type="video/mp4">
                 Maaf, browser Anda tidak mendukung pemutaran video.
               </video>
@@ -535,8 +542,8 @@
         </div>
       </section>
 
-      <!-- SECTION 4: FITUR PINTAR (Zebra Striping: Latar Terang Dikit) -->
-      <section class="sec" style="background: rgba(245, 243, 238, 0.02); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);">
+      <!-- SECTION 4: FITUR PINTAR (Zebra Striping) -->
+      <section class="sec sec-zebra">
         <div class="wrap">
           <div class="sec-head reveal">
             <span class="eyebrow">Fitur Pintar untuk Bisnis Anda</span>
@@ -611,8 +618,8 @@
         </div>
       </section>
 
-      <!-- SECTION 6: SOCIAL PROOF / AUTHORITY (Zebra Striping: Latar Terang Dikit) -->
-      <section class="sec" style="background: rgba(232, 185, 72, 0.03); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);">
+      <!-- SECTION 6: SOCIAL PROOF / AUTHORITY (Zebra Striping) -->
+      <section class="sec sec-zebra">
         <div class="wrap">
           <div class="sec-head reveal">
             <span class="eyebrow">Mengapa Anda Bisa Percaya Sistem Kami?</span>
@@ -666,12 +673,12 @@
           
           <style>
             @media (max-width: 768px) {
-              .sec[style*="border-top"] > .wrap > div:nth-child(2) {
+              .sec-zebra > .wrap > div:nth-child(2) {
                 grid-template-columns: 1fr !important;
                 padding: 24px !important;
                 text-align: center;
               }
-              .sec[style*="border-top"] > .wrap > div:nth-child(2) > div:nth-child(2) > div {
+              .sec-zebra > .wrap > div:nth-child(2) > div:nth-child(2) > div {
                 text-align: left;
               }
             }
@@ -751,8 +758,8 @@
         </div>
       </section>
 
-      <!-- SECTION 8: FAQ (Zebra Striping: Latar Terang Dikit) -->
-      <section class="sec" style="background: rgba(245, 243, 238, 0.02); border-top: 1px solid var(--line-soft);">
+      <!-- SECTION 8: FAQ (Zebra Striping) -->
+      <section class="sec sec-zebra">
         <div class="wrap">
           <div class="sec-head reveal">
             <span class="eyebrow">Masih ragu?</span>
@@ -819,7 +826,7 @@
       });
 
       // ==========================================
-      // 2. SCRIPT VIDEO (BEBAS BUG)
+      // 2. SCRIPT VIDEO TERBARU (ANTI MACET)
       // ==========================================
       document.addEventListener("DOMContentLoaded", function() {
         const videoContainer = document.getElementById("video-container");
@@ -830,6 +837,7 @@
         
         if (video && poster && videoContainer) {
           videoContainer.addEventListener("click", () => {
+            // Karena source-nya sudah langsung di HTML, kita bisa langsung perintahkan play
             if (video.paused) {
               const playPromise = video.play();
               if (playPromise !== undefined) {
@@ -839,12 +847,17 @@
                   if (clickHint) clickHint.style.display = "none";
                   video.style.display = "block";
                 }).catch(error => {
-                  console.log("Pemutaran video tertahan:", error);
+                  console.log("Autoplay dicegah browser, videonya akan ditampikan agar user bisa menekan tombol play bawaan:", error);
+                  poster.style.display = "none";
+                  if (playBtn) playBtn.style.display = "none";
+                  if (clickHint) clickHint.style.display = "none";
+                  video.style.display = "block";
                 });
               }
             }
           });
 
+          // Auto-pause kalau disekrol agar suara tidak bocor
           const pauseObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (!entry.isIntersecting && !video.paused) {
