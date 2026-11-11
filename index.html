@@ -380,6 +380,49 @@
         .pain .x, .oc .ic { margin: 0 auto 10px; }
         .faq summary, .faq .ans { text-align: left; }
       }
+      /* --- CSS EFEK ANIMASI VIDEO (ZOOM & PLAY BUTTON) --- */
+      #video-overlay {
+        overflow: hidden !important; 
+      }
+      #vid-poster {
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      
+      /* Tombol Play Lebih Besar & Elegan (Efek Kaca) */
+      .play-btn-large {
+        position: relative;
+        z-index: 3;
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+      .play-btn-large svg {
+        width: 44px;
+        height: 44px;
+        fill: #ffffff;
+        margin-left: 6px;
+        transition: fill 0.3s ease;
+      }
+      
+      /* Reaksi Saat Kotak Video Disorot (Hover) */
+      #video-overlay:hover #vid-poster {
+        transform: scale(1.08); /* Gambar membesar (Zoom-in) */
+      }
+      #video-overlay:hover .play-btn-large {
+        background: #FF6B00; /* Tombol berubah Orange */
+        border-color: #FF6B00;
+        transform: scale(1.1); /* Tombol ikut membesar sedikit */
+        box-shadow: 0 15px 40px rgba(255, 107, 0, 0.5);
+      }
     </style>
 
     <!-- Meta Pixel Code -->
@@ -527,27 +570,32 @@
           </div>
           
           <div id="video-container" class="playground-wrap reveal">
-            <!-- STRUKTUR VIDEO BARU: ANTI MACET, MENGGUNAKAN LAPISAN Z-INDEX -->
+            <!-- STRUKTUR VIDEO ANTI MACET DENGAN OVERLAY ANIMASI -->
             <div style="position: relative; border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16/9;">
               
-              <!-- Video berada di lapisan paling dasar (z-index 1). Ini memastikan browser sudah merender elemennya -->
+              <!-- Layer 1: Video asli -->
               <video id="demoVideo" loop playsinline controls preload="metadata" style="position: absolute; top:0; left:0; width: 100%; height: 100%; z-index: 1;">
                 <source src="demo-produk1.mp4" type="video/mp4">
                 Maaf, browser Anda tidak mendukung pemutaran video.
               </video>
               
-              <!-- Overlay/Poster ini menutupi video. Saat diklik, ini akan disembunyikan lewat Javascript -->
+              <!-- Layer 2: Overlay berisi Poster dan Tombol Play Baru -->
               <div id="video-overlay" style="position: absolute; inset: 0; z-index: 2; background: #000; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                
                 <img id="vid-poster" src="poster-demo1.webp" alt="Demo Admin Virtual" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85;">
-                <div class="play-btn" style="position: relative; z-index: 3;">
-                  <svg viewBox="0 0 24 24" style="width: 36px; height: 36px; fill: var(--gold-2); margin-left: 6px;"><path d="M8 5v14l11-7z"/></svg>
+                
+                <!-- Memanggil Class Tombol Play Terbaru -->
+                <div class="play-btn-large">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </div>
+                
               </div>
             </div>
             
             <div id="click-hint" style="text-align: center; font-size: 13px; color: var(--muted); padding: 12px 0 4px; font-weight: 600; letter-spacing: 0.05em; background: #1a1a1a;">
               👆 KLIK UNTUK MEMUTAR VIDEO DEMO LENGKAP
             </div>
+          </div>
           </div>
         </div>
       </section>
